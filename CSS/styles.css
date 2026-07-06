@@ -1,0 +1,259 @@
+:root {
+    --bg-hero: #0133a2;
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    
+    /* Colores de Productos */
+    --prod-blue: #0133a2;
+    --prod-silver: #e2e8f0;
+    --prod-red: #dc2626;
+    --prod-green: #50bd77;
+    --prod-orange: #ff7700;
+    --prod-purple: #7c3aed;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: #f8fafc;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+}
+/* --- SPLASH SCREEN (NUEVO PRELOADER) --- */
+body.loading { overflow: hidden; height: 100vh; }
+
+#splash-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #0133a2;
+    z-index: 99999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+#splash-screen.slide-up { transform: translateY(-100%); }
+
+.splash-ring {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: expandRing 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+.splash-ring-1 { width: 100px; height: 100px; animation-delay: 0s; }
+.splash-ring-2 { width: 100px; height: 100px; animation-delay: 0.5s; }
+.splash-ring-3 { width: 100px; height: 100px; animation-delay: 1s; }
+
+@keyframes expandRing {
+    0% { transform: scale(1); opacity: 1; border-width: 4px; }
+    100% { transform: scale(6); opacity: 0; border-width: 1px; }
+}
+
+/*.splash-logo-container {
+    width: 90px; 
+    height: auto;
+
+}*/
+/* Mantenemos el contenedor básico */
+.splash-logo-container {
+    width: 90px; /* Ajusta el tamaño según necesites */
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Aplicamos la animación al logo */
+.splash-logo-container svg {
+    width: 100%;
+    height: auto;
+    /* 4s = lento | ease-in-out = transiciones muy suaves | infinite = se repite siempre */
+    animation: pulsoSuave 4s ease-in-out infinite;
+}
+
+/* Creamos la secuencia del desvanecido y el pulso */
+@keyframes pulsoSuave {
+    0% {
+        opacity: 0.2; /* Casi desvanecido al empezar */
+        transform: scale(0.95); /* Ligeramente más pequeño */
+    }
+    50% {
+        opacity: 1; /* Completamente visible a la mitad del tiempo */
+        transform: scale(1); /* Tamaño original */
+    }
+    100% {
+        opacity: 0.2; /* Vuelve a desvanecerse para cerrar el ciclo */
+        transform: scale(0.95); /* Vuelve a achicarse */
+    }
+}
+.logo-container {
+    /* Aquí decides qué tan grande o pequeño lo quieres */
+    width: 170px; 
+    height: auto;
+}
+
+/* Solo por seguridad, aseguramos que el SVG respete el contenedor */
+.logo-container svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* --- NAVEGACIÓN --- */
+nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    transition: background 0.3s ease, padding 0.3s ease;
+    padding: 20px 0;
+}
+/*nav.scrolled {
+    background: rgba(2, 8, 19, 0.95); backdrop-filter: blur(10px); padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}*/
+.nav-link {
+    position: relative; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;
+}
+.nav-link::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
+    background: #38bdf8; transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+.btn-search {
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 50px;
+    padding: 8px 20px; display: flex; align-items: center; gap: 8px;
+    background: transparent; color: white; transition: all 0.3s;
+}
+.btn-search:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+/* --- HERO SECTION --- */
+#hero {
+    height: 100vh; background-color: var(--bg-hero); position: relative;
+    display: flex; align-items: center; overflow: hidden;
+}
+#hero-canvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+}
+.hero-content {
+    position: relative; z-index: 10; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%;
+}
+.hero-title {
+    font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 20px;
+}
+.btn-primary {
+    background: white; color: var(--bg-hero); padding: 12px 30px; border-radius: 50px;
+    font-weight: 600; font-size: 1rem; display: inline-block; transition: all 0.3s;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,255,255,0.2); }
+
+/* --- PRODUCTOS --- */
+.product-band {
+    width: 100%; padding: 80px 5%; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; min-height: 60vh;
+}
+.product-container {
+    max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+}
+.product-title { font-size: 3rem; margin-bottom: 15px; color: white; }
+.product-desc { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 30px; }
+.product-list { list-style: none; margin-bottom: 30px; }
+.product-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; font-size: 0.95rem;}
+.product-list li i { font-size: 0.8rem; }
+
+.btn-product {
+    background: #0133a2; color: white; padding: 12px 30px; border-radius: 4px;
+    font-weight: 600; display: inline-block; transition: all 0.3s; text-transform: uppercase; font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-product:hover { background: #012270; transform: translateY(-2px); }
+
+/* Contenedor 3D */
+.canvas-3d-wrapper {
+    width: 100%; height: 400px; position: relative; cursor: grab;
+    display: flex; align-items: center; justify-content: center;
+}
+.canvas-3d-wrapper:active { cursor: grabbing; }
+.drag-hint {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.3); padding: 5px 15px; border-radius: 20px;
+    font-size: 0.75rem; color: rgba(255,255,255,0.7); pointer-events: none;
+    display: flex; align-items: center; gap: 5px;
+}
+
+/* Colores específicos de cada banda */
+.band-blue { background-color: var(--prod-blue); color: white; }
+.band-silver { background-color: var(--prod-silver); color: #1e293b; }
+.band-silver .product-title { color: #0f172a; }
+.band-silver .product-desc { color: #475569; }
+.band-silver .btn-product { background: #0133a2; color: white; }
+
+.band-orange { background-color: var(--prod-orange); color: white; text-align: center; }
+.band-orange .product-container { grid-template-columns: 1fr; max-width: 800px;}
+.band-orange .features-flank { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;}
+
+.band-red { 
+    background: linear-gradient(rgba(220, 38, 38, 0.9), rgba(220, 38, 38, 0.95)), url('https://images.unsplash.com/photo-1552674605-db6aea4bc094?auto=format&fit=crop&w=1920&q=80') center/cover fixed; 
+    color: white; 
+}
+.band-green { background-color: var(--prod-green); color: white; }
+.band-purple { background-color: var(--prod-purple); color: white; }
+
+/* --- IA SCANNER --- */
+.ai-section { background: white; padding: 100px 5%; color: #0f172a; }
+.ai-box {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px;
+    padding: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto;
+}
+.form-input {
+    width: 100%; padding: 15px 20px; border: 1px solid #cbd5e1; border-radius: 8px;
+    margin-bottom: 20px; font-family: 'Inter'; outline: none; transition: all 0.3s;
+}
+.form-input:focus { border-color: var(--prod-blue); box-shadow: 0 0 0 3px rgba(1, 51, 162, 0.1); }
+
+/* Animaciones Scroll */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* Floating WhatsApp */
+.float-wa {
+    position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
+    background: #25d366; color: white; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; transition: transform 0.3s;
+}
+.float-wa:hover { transform: scale(1.1); }
+
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .product-container { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .product-list li { justify-content: center; }
+    .band-orange .features-flank { flex-direction: column; gap: 20px;}
+    nav .hidden { display: none !important; }
+}
+/* --- NUEVOS ESTILOS PARA IMÁGENES DE PRODUCTO (TAMAÑO AUMENTADO) --- */
+.product-image-container {
+    width: 100%;
+    height: 400px; /* Aumentamos la altura de 280px a 400px para darle más espacio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Fondo transparente para que luzca perfecto sobre las franjas de colores */
+    border: none; /* Quitamos el borde para un look más limpio */
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.real-product-img {
+    width: 100%; /* Forzamos a que ocupe todo el ancho disponible */
+    max-height: 100%; 
+    object-fit: contain; /* Evita que la imagen se deforme */
+    filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.4)); /* Sombra un poco más oscura para darle profundidad */
+    animation: floatImage 6s ease-in-out infinite;
+    /* translateZ la empuja hacia adelante en el 3D y scale(1.15) la agranda un 15% extra */
+    transform: translateZ(50px) scale(1.15); 
+}
+
+@keyframes floatImage {
+    0% { transform: translateZ(50px) scale(1.15) translateY(0px); }
+    50% { transform: translateZ(50px) scale(1.15) translateY(-15px); }
+    100% { transform: translateZ(50px) scale(1.15) translateY(0px); }
+}

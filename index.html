@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immunotec | Revolución en Salud y Negocios</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body class="loading">
+    <div id="splash-screen">
+        <!--a <div class="splash-ring splash-ring-1"></div>
+        <div class="splash-ring splash-ring-2"></div>
+        <div class="splash-ring splash-ring-3"></div>-->
+
+        <div class="splash-logo-container">
+            <svg width="100%" height="100%" viewBox="0 0 33 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_3788_5682)">
+                    <path d="M6.08465 0.916992L4.38477 2.61688L12.6586 10.8831V20.917H15.058V9.89029L6.08465 0.916992Z"
+                        fill="white" />
+                    <path d="M2.64719 4.2897L0.950562 5.98633L7.70517 12.7409L9.4018 11.0443L2.64719 4.2897Z"
+                        fill="white" />
+                    <path d="M28.7548 2.61688L27.0625 0.916992L18.0892 9.89029V20.917H20.4886V10.8831L28.7548 2.61688Z"
+                        fill="white" />
+                    <path d="M30.4922 4.29031L23.7375 11.0449L25.4342 12.7416L32.1888 5.98694L30.4922 4.29031Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_3788_5682">
+                        <rect width="31.2373" height="20" fill="white" transform="translate(0.954895 0.916992)" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <nav id="navbar"
+        class="fixed top-0 left-0 w-full flex justify-between items-center px-4 md:px-8 py-3 text-white z-50 bg-transparent border-b border-transparent transition-all duration-300">
+
+        <div class="flex items-center gap-4 logo-container">
+            <svg width="100%" height="100%" viewBox="0 0 226 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_701_3387)">
+                    <path d="M55.6543 0.0283203H58.8575V25.5008H55.6543V0.0283203Z" fill="white" />
+                    <path
+                        d="M62.3766 7.07726H65.2634V9.71466H65.3305C66.4718 7.93082 68.4282 6.65527 70.7492 6.65527C73.0701 6.65527 74.7772 7.79655 75.554 9.93524H75.6212C76.8008 7.83491 79.0066 6.65527 81.2508 6.65527C84.5308 6.65527 86.8421 8.7556 86.8421 12.5726V25.5007H83.9554V12.7069C83.9554 10.4244 82.4209 9.07209 80.5699 9.07209C78.1818 9.07209 76.0432 11.1437 76.0432 14.0208V25.4911H73.1564V12.6973C73.1564 10.4148 71.8713 9.0625 69.9819 9.0625C67.7377 9.0625 65.2442 11.1341 65.2442 14.0112V25.4815H62.3574V7.07726H62.3766Z"
+                        fill="white" />
+                    <path
+                        d="M89.777 7.07726H92.6638V9.71466H92.7309C93.8722 7.93082 95.8286 6.65527 98.1495 6.65527C100.47 6.65527 102.178 7.79655 102.954 9.93524H103.022C104.201 7.83491 106.407 6.65527 108.651 6.65527C111.931 6.65527 114.243 8.7556 114.243 12.5726V25.5007H111.356V12.7069C111.356 10.4244 109.821 9.07209 107.97 9.07209C105.582 9.07209 103.444 11.1437 103.444 14.0208V25.4911H100.557V12.6973C100.557 10.4148 99.2716 9.0625 97.3823 9.0625C95.1381 9.0625 92.6446 11.1341 92.6446 14.0112V25.4815H89.7578V7.07726H89.777Z"
+                        fill="white" />
+                    <path
+                        d="M128.888 25.5006V22.9687H128.821C127.507 24.7525 125.934 25.9226 123.258 25.9226C119.479 25.9226 117.062 23.64 117.062 19.8326V7.07715H119.949V19.7559C119.949 22.1439 121.484 23.5345 124.083 23.5345C127.008 23.5345 128.888 21.3287 128.888 18.4036V7.07715H131.774V25.491H128.888V25.5006Z"
+                        fill="white" />
+                    <path
+                        d="M137.682 9.50367H137.749C139.063 7.75819 140.923 6.65527 143.589 6.65527C147.435 6.65527 149.785 8.7556 149.785 12.5726V25.5007H146.898V12.822C146.898 10.434 145.335 9.08168 142.736 9.08168C139.811 9.08168 137.682 11.1532 137.682 14.1743V25.5007H134.795V7.07726H137.682V9.50367Z"
+                        fill="white" />
+                    <path
+                        d="M151.684 16.3134C151.684 10.9715 155.107 6.62695 160.593 6.62695C166.079 6.62695 169.464 10.9715 169.464 16.3134C169.464 21.6554 166.117 25.9999 160.593 25.9999C155.069 25.9999 151.684 21.6554 151.684 16.3134ZM166.501 16.3134C166.501 12.247 164.506 9.00541 160.593 9.00541C156.68 9.00541 154.647 12.247 154.647 16.3134C154.647 20.3798 156.68 23.5831 160.593 23.5831C164.506 23.5831 166.501 20.3798 166.501 16.3134Z"
+                        fill="white" />
+                    <path
+                        d="M169.926 7.07768H172.602V1.27539H175.488V7.07768H179.056V9.42736H175.488V21.3964C175.488 22.6815 176.169 23.1035 177.339 23.1035C177.905 23.1035 178.548 22.9596 178.874 22.8541H178.979V25.3477C178.298 25.4915 177.521 25.597 176.658 25.597C174.309 25.597 172.602 24.638 172.602 22.0389V9.42736H169.926V7.07768Z"
+                        fill="white" />
+                    <path
+                        d="M179.929 16.3134C179.929 10.9715 183.42 6.62695 188.657 6.62695C194.181 6.62695 197.135 10.9043 197.135 16.9943H182.883C183.094 20.7347 185.127 23.5831 188.829 23.5831C191.505 23.5831 193.279 22.2979 193.922 19.8044H196.732C195.878 23.7557 192.992 25.9999 188.82 25.9999C183.19 25.9999 179.91 21.6554 179.91 16.3134H179.929ZM182.96 14.8173H194.037C193.855 11.1441 191.975 8.89991 188.657 8.89991C185.338 8.89991 183.382 11.4606 182.96 14.8173Z"
+                        fill="white" />
+                    <path
+                        d="M198.025 16.3134C198.025 10.9715 201.449 6.62695 206.935 6.62695C211.28 6.62695 214.166 9.1205 214.809 13.043H211.884C211.452 10.5495 209.707 9.015 206.935 9.015C203.022 9.015 200.989 12.2566 200.989 16.323C200.989 20.3894 203.022 23.5926 206.935 23.5926C209.927 23.5926 211.711 21.8855 211.96 19.0371H214.809C214.416 23.4584 211.529 26.0191 206.935 26.0191C201.449 26.0191 198.025 21.6745 198.025 16.3326V16.3134Z"
+                        fill="white" />
+                    <path
+                        d="M218.166 21.9717C218.166 19.9481 219.729 18.4424 221.628 18.4424C223.527 18.4424 225.1 19.9385 225.1 21.9717C225.1 24.0049 223.537 25.501 221.628 25.501C219.72 25.501 218.166 24.0145 218.166 21.9717ZM224.505 21.9717C224.505 20.2358 223.297 18.9603 221.638 18.9603C219.979 18.9603 218.77 20.2454 218.77 21.9717C218.77 23.698 219.979 24.9831 221.638 24.9831C223.297 24.9831 224.505 23.7172 224.505 21.9717ZM220.276 20.0632H221.993C222.674 20.0632 223.172 20.4948 223.172 21.1086C223.172 21.5305 222.952 21.8854 222.472 22.0005V22.0197C222.837 22.1252 223.009 22.3266 223.057 22.7773C223.115 23.3048 223.086 23.698 223.22 23.7556V23.8035H222.511C222.405 23.7556 222.367 23.3336 222.347 22.9404C222.328 22.5471 222.098 22.2978 221.628 22.2978H221.014V23.7939H220.276V20.0632ZM221.014 21.7224H221.83C222.232 21.7224 222.443 21.5018 222.443 21.1949C222.443 20.888 222.242 20.6674 221.83 20.6674H221.014V21.7128V21.7224Z"
+                        fill="white" />
+                    <path d="M6.54051 0L4.37305 2.16747L14.9227 12.7075V25.5013H17.982V11.4415L6.54051 0Z"
+                        fill="white" />
+                    <path d="M2.15745 4.29958L-0.00585938 6.46289L8.60671 15.0755L10.77 12.9121L2.15745 4.29958Z"
+                        fill="white" />
+                    <path d="M35.4471 2.16747L33.2892 0L21.8477 11.4415V25.5013H24.907V12.7075L35.4471 2.16747Z"
+                        fill="white" />
+                    <path d="M37.6614 4.3015L29.0488 12.9141L31.2121 15.0774L39.8247 6.46481L37.6614 4.3015Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_701_3387">
+                        <rect width="225.1" height="26" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+
+        <ul class="hidden md:flex gap-8 text-sm absolute left-1/2 transform -translate-x-1/2">
+            <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+            <li><a href="#productos" class="nav-link">Productos</a></li>
+            <li><a href="#ciencia" class="nav-link">Ciencia</a></li>
+            <li><a href="#negocio" class="nav-link">Negocio</a></li>
+            <li><a href="#contacto" class="nav-link">Contáctanos</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <form id="form-busqueda" class="relative group">
+                <i
+                    class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-white z-10 pointer-events-none text-xs md:text-sm"></i>
+                <input type="text" id="buscador-input" placeholder="Buscar"
+                    class="bg-white/10 hover:bg-white/20 focus:bg-white/20 border border-white/20 text-white placeholder-white/80 rounded-full py-1.5 pl-8 pr-3 outline-none text-xs md:text-sm w-28 md:w-48 transition-all shadow-sm backdrop-blur-md relative">
+            </form>
+
+            <button id="btn-menu-mobile" class="text-white text-xl md:hidden focus:outline-none p-1 cursor-pointer">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="menu-mobile"
+            class="absolute top-full left-0 w-full bg-slate-900 border-t border-white/10 flex-col py-6 gap-6 hidden shadow-2xl md:hidden">
+            <a href="#nosotros" class="text-white text-center text-lg hover:text-blue-300">Nosotros</a>
+            <a href="#productos" class="text-white text-center text-lg hover:text-blue-300">Productos</a>
+            <a href="#ciencia" class="text-white text-center text-lg hover:text-blue-300">Ciencia</a>
+            <a href="#negocio" class="text-white text-center text-lg hover:text-blue-300">Negocio</a>
+            <a href="#contacto" class="text-white text-center text-lg hover:text-blue-300">Contáctanos</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="pt-24 md:pt-28">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content reveal">
+            <h1 class="hero-title">Eleva tu salud<br>y bienestar</h1>
+            <p>Descubre el poder de la ciencia biotecnológica enfocada en el glutatión. La innovación que transforma
+                vidas, ahora a tu alcance.</p>
+            <a href="#productos" class="btn-primary">Ver productos</a>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-24 bg-white text-slate-800 relative">
+        <div class="max-w-6xl mx-auto px-5 reveal">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-[#0133a2] mb-4">¿Quiénes Somos?</h2>
+                <p class="text-lg text-slate-500 max-w-3xl mx-auto">Más de 45 años de investigación científica respaldan
+                    nuestro compromiso con tu salud celular y tu bienestar integral.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 font-display">El descubrimiento del Glutatión</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed text-justify">Todo empezó en Montreal, Canadá, cuando
+                        investigadores de clase mundial descubrieron un aislado de suero de leche especialmente
+                        preparado (Immunocal). Este nutriente esencial proporciona los bloques de construcción (cisteína
+                        consolidada) para que tus células produzcan <strong>Glutatión</strong>, el antioxidante maestro
+                        del cuerpo.</p>
+                    <p class="text-slate-600 mb-6 leading-relaxed text-justify">Desde el inicio, Immunotec fue
+                        diferente. Hoy en día somos una empresa global con presencia en 14 países, impactando a millones
+                        de personas a través de la nutrición científica y el emprendimiento.</p>
+
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <h4 class="text-3xl font-bold text-[#0133a2]">+430M</h4>
+                            <p class="text-xs font-bold text-slate-500 uppercase mt-1">Porciones Vendidas</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <h4 class="text-3xl font-bold text-[#0133a2]">14</h4>
+                            <p class="text-xs font-bold text-slate-500 uppercase mt-1">Países de Presencia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"
+                        alt="Investigación Immunotec" class="rounded-2xl shadow-xl w-full object-cover h-[400px]">
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-white p-5 rounded-xl shadow-lg border-l-4 border-[#0133a2] hidden md:block">
+                        <p class="font-bold text-lg text-slate-800">Mauricio Domenzain</p>
+                        <p class="text-slate-500 text-sm">CEO Immunotec</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="productos">
+
+        <!-- PLATINUM -->
+        <section class="product-band band-silver">
+            <div class="product-container reveal">
+                <div>
+                    <h2 class="product-title">Immunocal Platinum</h2>
+                    <p class="product-desc">Fórmula avanzada ideal para personas mayores de 35 años o deportistas. Añade
+                        CMP (modulador de inflamación) y RMF (balance de pH).</p>
+                    <ul class="product-list">
+                        <li><i class="fas fa-arrow-right"></i> Mantiene la masa muscular y fuerza.</li>
+                        <li><i class="fas fa-arrow-right"></i> Previene la descalcificación ósea.</li>
+                        <li><i class="fas fa-arrow-right"></i> Combate la inflamación celular.</li>
+                    </ul>
+                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Immunocal%20Platinum" class="btn-product"
+                        target="_blank">Comprar Platinum</a>
+                </div>
+                <!-- NUEVA IMAGEN PLATINUM -->
+                <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                    data-tilt-glare="true" data-tilt-max-glare="0.3">
+                    <img src="IMGS/Immunocal-Platinum-nutriwaves.png" alt="Immunocal Platinum" class="real-product-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- OMEGA -->
+        <section class="product-band band-orange">
+            <div class="product-container reveal">
+                <div class="text-center">
+                    <div
+                        class="flex justify-center gap-10 text-sm mb-4 opacity-80 uppercase tracking-widest hidden md:flex">
+                        <span>Vitamina E</span>
+                        <span>Curcumina</span>
+                    </div>
+
+                    <h2 class="product-title" style="font-size: 4rem;">Omega Gen V</h2>
+
+                    <div class="features-flank my-8">
+                        <div class="text-right hidden md:block opacity-80 uppercase tracking-widest text-sm">
+                            <p>CoQ10</p>
+                        </div>
+
+                        <!-- NUEVA IMAGEN OMEGA -->
+                        <div class="product-image-container"
+                            style="max-width: 300px; margin: 0 auto; background: transparent; border: none;" data-tilt
+                            data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.3">
+                            <img src="IMGS/omega.png" alt="Omega Gen V" class="real-product-img">
+                        </div>
+
+                        <div class="text-left hidden md:block opacity-80 uppercase tracking-widest text-sm">
+                            <p>Piperina</p>
+                        </div>
+                    </div>
+
+                    <h3 class="font-display text-2xl mb-4">5 Ventajas del Omega Gen V</h3>
+                    <ul class="product-list" style="display: inline-block; text-align: left;">
+                        <li><i class="fas fa-check text-white"></i> Apoya la salud cardiovascular</li>
+                        <li><i class="fas fa-check text-white"></i> Apoya la salud cognitiva y ocular</li>
+                        <li><i class="fas fa-check text-white"></i> Combate la inflamación celular</li>
+                    </ul>
+                    <br>
+                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Omega%20Gen%20V" class="btn-product mt-4"
+                        style="background: white; color: #f97316;" target="_blank">Adquirir Omega</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPORT -->
+        <section class="product-band band-red">
+            <div class="product-container reveal">
+                <div>
+                    <!-- NUEVA IMAGEN SPORT -->
+                    <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                        data-tilt-glare="true" data-tilt-max-glare="0.3">
+                        <img src="IMGS/sport0.png" alt="Immunocal Sport" class="real-product-img">
+                    </div>
+                </div>
+                <div>
+                    <h2 class="product-title">Immunocal Sport</h2>
+                    <p class="product-desc" style="font-size: 0.95rem;">Potente fórmula con precursores de óxido nítrico
+                        para suministrar más oxígeno al cuerpo, aumentando el rendimiento y logrando una recuperación
+                        rápida.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
+                        <ul class="product-list m-0">
+                            <li><i class="fas fa-circle text-[8px]"></i> Precursor del glutatión</li>
+                            <li><i class="fas fa-circle text-[8px]"></i> Alto valor biológico</li>
+                            <li><i class="fas fa-circle text-[8px]"></i> Raíz de remolacha (Óxido Nítrico)</li>
+                        </ul>
+                        <ul class="product-list m-0">
+                            <li><i class="fas fa-circle text-[8px]"></i> Cereza ácida (Antiinflamatorio)</li>
+                            <li><i class="fas fa-circle text-[8px]"></i> Citrato de magnesio</li>
+                            <li><i class="fas fa-circle text-[8px]"></i> Sin gluten. Sin OGM</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Immunocal%20Sport" class="btn-product"
+                        style="background: #0133a2; border:none;" target="_blank">Comprar Sport</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPTIMIZER -->
+        <section class="product-band band-green">
+            <div class="product-container reveal">
+                <div>
+                    <h2 class="product-title">Immunocal Optimizer</h2>
+                    <h3 class="text-xl mb-4 font-display">Beneficios</h3>
+                    <ul class="product-list">
+                        <li><i class="fas fa-arrow-right"></i> Complemento perfecto para Immunocal.</li>
+                        <li><i class="fas fa-arrow-right"></i> Multiplica la acción de los antioxidantes.</li>
+                        <li><i class="fas fa-arrow-right"></i> Más de 50 frutas y verduras orgánicas.</li>
+                        <li><i class="fas fa-arrow-right"></i> Extracto de semilla de brócoli.</li>
+                    </ul>
+                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Optimizer" class="btn-product"
+                        target="_blank">Adquirir Optimizer</a>
+                </div>
+                <!-- NUEVA IMAGEN OPTIMIZER -->
+                <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                    data-tilt-glare="true" data-tilt-max-glare="0.3">
+                    <img src="IMGS/Sin-título-3-1536x1163-1.png" alt="Immunocal Optimizer" class="real-product-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- CLÁSICO -->
+        <section class="product-band band-blue">
+            <div class="product-container reveal">
+                <!-- NUEVA IMAGEN CLÁSICO -->
+                <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                    data-tilt-glare="true" data-tilt-max-glare="0.3">
+                    <img src="IMGS/immunotec_clasico (1).png" alt="Immunocal Clásico" class="real-product-img">
+                </div>
+                <div>
+                    <h2 class="product-title">Immunocal Clásico</h2>
+                    <p class="product-desc">Proteína de suero de leche especialmente formulada para entregar cisteína
+                        consolidada, el bloque de construcción clave para producir Glutatión.</p>
+                    <ul class="product-list">
+                        <li><i class="fas fa-check text-blue-300"></i> Optimiza el sistema inmunológico.</li>
+                        <li><i class="fas fa-check text-blue-300"></i> Desintoxicador celular maestro.</li>
+                        <li><i class="fas fa-check text-blue-300"></i> Incrementa la energía natural.</li>
+                    </ul>
+                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Immunocal%20Clásico" class="btn-product"
+                        style="background: white; color: #0133a2;" target="_blank">Comprar Clásico</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section id="ciencia" class="py-24 bg-slate-100 text-slate-800 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 reveal">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-[#0133a2] mb-4">Ciencia Validada</h2>
+                <p class="text-lg text-slate-500 max-w-3xl mx-auto">Nuestros productos no son una simple promesa, son un
+                    resultado científico comprobado y rigurosamente documentado.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-md text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-slate-50 rounded-full flex items-center justify-center mb-6 border-4 border-slate-100 shadow-sm">
+                        <i class="fas fa-microscope text-3xl text-[#0133a2]"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-1 font-display">Dr. Gustavo Bounous</h4>
+                    <p class="text-xs font-bold text-[#38bdf8] mb-3 uppercase tracking-wider">Co-Creador</p>
+                    <p class="text-slate-500 text-sm">Descubridor del aislado de proteína de suero lácteo precursor de
+                        glutatión.</p>
+                </div>
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-md text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-slate-50 rounded-full flex items-center justify-center mb-6 border-4 border-slate-100 shadow-sm">
+                        <i class="fas fa-vial text-3xl text-[#0133a2]"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-1 font-display">Dra. Patricia Kongshavn</h4>
+                    <p class="text-xs font-bold text-[#38bdf8] mb-3 uppercase tracking-wider">Co-Creadora</p>
+                    <p class="text-slate-500 text-sm">Pionera en la investigación del sistema inmunológico y su relación
+                        estrecha con la nutrición.</p>
+                </div>
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-md text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-slate-50 rounded-full flex items-center justify-center mb-6 border-4 border-slate-100 shadow-sm">
+                        <i class="fas fa-book-medical text-3xl text-[#0133a2]"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-1 font-display">Dr. Jimmy Gutman</h4>
+                    <p class="text-xs font-bold text-[#38bdf8] mb-3 uppercase tracking-wider">Asesor Médico Ppal.</p>
+                    <p class="text-slate-500 text-sm">Máxima autoridad mundial en glutatión y autor de los libros más
+                        vendidos sobre el tema.</p>
+                </div>
+            </div>
+
+            <div
+                class="bg-[#0133a2] rounded-3xl p-8 md:p-12 text-white flex flex-col md:flex-row items-center gap-10 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -mr-20 -mt-20">
+                </div>
+                <div class="md:w-2/3 relative z-10">
+                    <h3 class="text-2xl md:text-3xl font-display font-bold mb-4">Respaldado por el PDR y CPS</h3>
+                    <p class="text-blue-100 text-md leading-relaxed">Immunocal figura desde hace más de 19 años en el
+                        <strong>Physician's Desk Reference (EE.UU.)</strong> y en el <strong>Compendium of
+                            Pharmaceuticals and Specialties (Canadá)</strong>, dos de las fuentes de información médica
+                        más respetadas del mundo.
+                    </p>
+                </div>
+                <div class="md:w-1/3 flex justify-center gap-8 relative z-10">
+                    <div class="text-center">
+                        <div class="text-5xl font-display font-bold text-[#38bdf8] mb-1">78</div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-blue-200">Patentes</div>
+                    </div>
+                    <div class="w-px bg-white/20"></div>
+                    <div class="text-center">
+                        <div class="text-5xl font-display font-bold text-[#38bdf8] mb-1">401</div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-blue-200">Estudios</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="negocio" class="py-24 bg-white text-slate-800">
+        <div class="max-w-6xl mx-auto px-5 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+                        alt="Oportunidad de Negocio" class="rounded-2xl shadow-xl">
+                    <div class="absolute -inset-4 border-2 border-[#38bdf8] rounded-2xl -z-10 hidden md:block"></div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div
+                        class="inline-block px-4 py-1 rounded-full bg-blue-50 text-[#0133a2] font-bold text-xs mb-4 uppercase tracking-wider border border-blue-100">
+                        Crecimiento Financiero</div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-[#0133a2] leading-tight">Un negocio
+                        basado en lo que el mundo necesita</h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed text-justify">
+                        Bienestar y energía son los temas centrales de la creciente industria actual. La oportunidad de
+                        Immunotec combina las ventajas de una línea de productos de calidad mundial con uno de los
+                        <strong>planes de compensación más generosos</strong> del mercado.
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-[#38bdf8] text-xl"></i> Tienes 7 formas distintas de
+                            generar ingresos.
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-[#38bdf8] text-xl"></i> Trabaja desde casa o desde
+                            cualquier lugar del mundo.
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-[#38bdf8] text-xl"></i> Capacitación constante y fuerte
+                            trabajo en equipo.
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-[#38bdf8] text-xl"></i> Viajes de incentivo (La Vida
+                            Immunotec).
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/51955900486?text=Quiero%20conocer%20el%20plan%20de%20negocios%20de%20Immunotec"
+                        target="_blank"
+                        class="bg-[#0133a2] hover:bg-blue-900 text-white px-8 py-4 rounded-full font-bold text-lg transition-transform hover:-translate-y-1 inline-flex items-center gap-3 shadow-lg">
+                        <i class="fab fa-whatsapp text-2xl text-[#25d366]"></i> Inicia tu negocio hoy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="escaner" class="ai-section bg-slate-50 border-t border-slate-200">
+        <div class="reveal">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-display text-blue-900 mb-4">Escáner Nutricional IA</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Nuestra Inteligencia Artificial evalúa tu perfil para
+                    recomendarte el producto exacto de Immunotec que necesitas.</p>
+            </div>
+
+            <div class="ai-box">
+                <form id="ai-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="font-bold mb-2 block">Tu Edad</label>
+                            <input type="number" id="user-age" class="form-input" placeholder="Ej. 45" required
+                                min="18">
+                        </div>
+                        <div>
+                            <label class="font-bold mb-2 block">Objetivo Principal</label>
+                            <select id="user-goal" class="form-input" required>
+                                <option value="">Selecciona...</option>
+                                <option value="Defensas">Elevar defensas</option>
+                                <option value="Articulaciones">Dolor articular / Desinflamación</option>
+                                <option value="Deporte">Rendimiento deportivo</option>
+                                <option value="Memoria">Salud cerebral y visual</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" id="btn-submit-ai"
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-colors">
+                        Generar Recomendación
+                    </button>
+                </form>
+
+                <div id="ai-loading" class="loader" style="display:none;">Cargando...</div>
+                <div id="ai-error" style="display:none; color:red; text-align:center; margin-top:20px;">Error al
+                    conectar con la IA.</div>
+
+                <div id="ai-result-box" class="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg hidden">
+                    <h3 class="font-bold text-xl text-blue-900 mb-3">Recomendación de la IA:</h3>
+                    <div id="ai-response-text" class="text-gray-700 leading-relaxed mb-4"></div>
+                    <a href="#" id="ai-whatsapp-btn" target="_blank"
+                        class="inline-block bg-green-500 text-white font-bold py-3 px-6 rounded hover:bg-green-600 transition-colors w-full text-center">
+                        <i class="fab fa-whatsapp"></i> Hablar con un Asesor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container text-center py-8">
+            <h2 class="font-display text-2xl mb-6">Immunotec Consultores</h2>
+            <div class="flex justify-center gap-4 mb-8">
+                <a href="#"
+                    class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-blue-500 transition-colors"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-blue-500 transition-colors"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="text-gray-500 text-sm">© 2026 Todos los derechos reservados. Distribuidor Independiente.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/51955900486" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
