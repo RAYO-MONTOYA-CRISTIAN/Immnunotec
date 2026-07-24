@@ -47,12 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
         manejarScroll();
     }, 2900);
 
-    // --- 3. PARTICLE CANVAS ANIMATION (HERO) ---
+    // --- 3. ANIMACIÓN DE PARTÍCULAS ORIGINAL Y PRESERVADA (HERO) ---
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     let width, height, particles;
+    let runParticles = true; // Interruptor de rendimiento para apagar el bucle de dibujo cuando no sea visible
 
     function initParticles() {
+        if (!canvas) return;
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         particles = [];
@@ -70,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animateParticles() {
+        if (!runParticles) return; // Si runParticles pasa a false, se detiene el bucle liberando CPU/GPU
         ctx.clearRect(0, 0, width, height);
         const centerX = width;
         const centerY = height / 2;
@@ -93,6 +96,110 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
     animateParticles();
     window.addEventListener('resize', initParticles);
+
+
+    // --- 3.1 CARRUSEL MULTIMEDIA DINÁMICO ---
+
+    // Lista de elementos multimedia consecutivos (imágenes y videos)
+    const heroMediaList = [
+        { type: 'image', src: 'IMGS/img1.jpg' },
+        { type: 'video', src: 'Desktop 2026-07-14 23-13-54.mp4' }, // Tu archivo de video MP4 local
+        { type: 'image', src: 'IMGS/img10.jpg' },
+        { type: 'image', src: 'IMGS/img11.jpg' }
+    ];
+
+    const mediaContainer = document.getElementById('hero-media-container');
+    let currentMediaIndex = 0;
+
+    // CONFIGURACIÓN DE TIEMPOS (en milisegundos)
+    const IMAGE_DURATION = 6000;      // Cuánto dura cada imagen en pantalla (6 segundos)
+    const PARTICLES_DURATION = 8000;  // Cuánto tiempo se muestra la animación de partículas tras ocultarse el preloader (8 segundos)
+
+    let timeoutId;
+
+    if (mediaContainer && heroMediaList.length > 0) {
+
+        // Generar dinámicamente los elementos multimedia en el DOM para iniciar su precarga en segundo plano
+        heroMediaList.forEach((media, index) => {
+            let el;
+            if (media.type === 'video') {
+                el = document.createElement('video');
+                el.src = media.src;
+                el.muted = true;       // Requerido por navegadores para permitir reproducción automática
+                el.playsInline = true;  // Requerido para reproducción en línea en dispositivos móviles (iOS/Android)
+                el.preload = 'auto';
+
+                // Evento nativo: avanza al siguiente slide cuando el video actual termina de reproducirse
+                el.addEventListener('ended', nextMedia);
+            } else {
+                el = document.createElement('img');
+                el.src = media.src;
+            }
+
+            el.className = 'hero-media-item';
+            el.id = `hero-media-${index}`;
+            mediaContainer.appendChild(el);
+        });
+
+        // Función para activar y reproducir la diapositiva correspondiente
+        function showMedia(index) {
+            clearTimeout(timeoutId);
+
+            const allItems = document.querySelectorAll('.hero-media-item');
+            allItems.forEach((item, i) => {
+                item.classList.remove('active-media');
+                if (item.tagName === 'VIDEO' && i !== index) {
+                    item.pause();
+                    item.currentTime = 0; // Reiniciamos el video para su próxima visualización
+                }
+            });
+
+            const currentItem = document.getElementById(`hero-media-${index}`);
+            if (currentItem) {
+                currentItem.classList.add('active-media');
+
+                const mediaData = heroMediaList[index];
+                if (mediaData.type === 'video') {
+                    currentItem.play().catch(e => {
+                        console.warn("La reproducción automática del video fue bloqueada por el navegador:", e);
+                        nextMedia(); // Fallback por si hay restricciones de autoplay
+                    });
+                } else {
+                    timeoutId = setTimeout(nextMedia, IMAGE_DURATION);
+                }
+            }
+        }
+
+        function nextMedia() {
+            currentMediaIndex++;
+            if (currentMediaIndex >= heroMediaList.length) {
+                currentMediaIndex = 0;
+            }
+            showMedia(currentMediaIndex);
+        }
+
+        // Programar la transición: de Partículas a Carrusel Multimedia
+        // Se calcula sumando el tiempo de carga del splash screen (2.8s) + el tiempo que definiste para ver tus partículas
+        setTimeout(() => {
+
+            // 1. Desvanecer la animación de partículas
+            if (canvas) {
+                canvas.classList.add('fade-out');
+            }
+
+            // 2. Mostrar el contenedor del carrusel multimedia
+            mediaContainer.classList.add('fade-in');
+
+            // 3. Comenzar la reproducción del carrusel
+            showMedia(currentMediaIndex);
+
+            // 4. Detener de forma definitiva el renderizado de partículas tras completarse la transición CSS (1.5s)
+            setTimeout(() => {
+                runParticles = false;
+            }, 1500);
+
+        }, 2800 + PARTICLES_DURATION);
+    }
 
     // --- 4. THREE.JS ENGINE PARA PRODUCTOS ---
     const canvas3DContainers = document.querySelectorAll('.canvas-3d-wrapper');
