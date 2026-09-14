@@ -1,0 +1,419 @@
+@import "tailwindcss";
+
+/* =====================================================
+   TEMA CORPORATIVO IMMUNOTEC
+   ===================================================== */
+@theme {
+  --color-brand: #0133a2;
+  --color-brand-dark: #012270;
+  --color-brand-light: #3e6ae1;
+  --color-accent: #38bdf8;
+  --color-prod-silver: #e2e8f0;
+  --color-prod-orange: #ff7700;
+  --color-prod-red: #dc2626;
+  --color-prod-green: #50bd77;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+}
+
+/* =====================================================
+   BASE
+   ===================================================== */
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* =====================================================
+   SPLASH SCREEN
+   ===================================================== */
+body.loading {
+  overflow: hidden;
+  height: 100vh;
+}
+
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #0133a2;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+#splash-screen.slide-up {
+  transform: translateY(-100%);
+}
+
+.splash-logo-container {
+  width: 90px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-logo-container svg {
+  width: 100%;
+  height: auto;
+  animation: pulsoSuave 4s ease-in-out infinite;
+}
+
+@keyframes pulsoSuave {
+  0%   { opacity: 0.2; transform: scale(0.95); }
+  50%  { opacity: 1;   transform: scale(1); }
+  100% { opacity: 0.2; transform: scale(0.95); }
+}
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+.logo-container {
+  width: 170px;
+  height: auto;
+}
+
+.logo-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =====================================================
+   NAV LINKS
+   ===================================================== */
+.nav-link {
+  position: relative;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+#hero {
+  background-color: #0133a2;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: opacity 1.5s ease-in-out;
+}
+
+#hero-canvas.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Carousel media */
+#hero-media-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+#hero-media-container.fade-in {
+  opacity: 1;
+}
+
+.hero-media-item {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 1;
+}
+
+.hero-media-item.active-media {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* =====================================================
+   SECCIÓN: REVEAL ON SCROLL
+   ===================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   PRODUCTOS — BANDAS DE COLOR
+   ===================================================== */
+.product-band {
+  width: 100%;
+  padding: 80px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+}
+
+.product-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.product-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.product-desc {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.product-list {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.product-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.btn-product {
+  background: #0133a2;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.btn-product:hover {
+  background: #012270;
+  transform: translateY(-2px);
+}
+
+/* Bandas individuales */
+.band-blue   { background-color: #0133a2; color: white; }
+.band-silver { background-color: #e2e8f0; color: #1e293b; }
+.band-silver .product-title { color: #0f172a; }
+.band-silver .product-desc  { color: #475569; }
+.band-silver .btn-product   { background: #0133a2; color: white; }
+
+.band-orange { background-color: #ff7700; color: white; text-align: center; }
+.band-orange .product-container {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+}
+.band-orange .features-flank {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.band-red {
+  background: linear-gradient(
+    rgba(220, 38, 38, 0.92),
+    rgba(185, 28, 28, 0.97)
+  );
+  color: white;
+}
+
+.band-green { background-color: #50bd77; color: white; }
+
+/* =====================================================
+   IMÁGENES DE PRODUCTO — EFECTO FLOAT + TILT
+   ===================================================== */
+.product-image-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.real-product-img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35));
+  animation: floatImage 6s ease-in-out infinite;
+  transform: translateZ(50px) scale(1.1);
+}
+
+@keyframes floatImage {
+  0%   { transform: translateZ(50px) scale(1.1) translateY(0px); }
+  50%  { transform: translateZ(50px) scale(1.1) translateY(-14px); }
+  100% { transform: translateZ(50px) scale(1.1) translateY(0px); }
+}
+
+/* =====================================================
+   AI SCANNER
+   ===================================================== */
+.ai-section {
+  background: white;
+  padding: 100px 5%;
+  color: #0f172a;
+}
+
+.ai-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: all 0.3s;
+  background: white;
+  color: #1e293b;
+}
+
+.form-input:focus {
+  border-color: #0133a2;
+  box-shadow: 0 0 0 3px rgba(1, 51, 162, 0.1);
+}
+
+.loader {
+  text-align: center;
+  color: #0133a2;
+  font-weight: 600;
+  padding: 20px;
+}
+
+/* =====================================================
+   BOTONES FLOTANTES DE CONTACTO
+   ===================================================== */
+.btn-phone-anim {
+  animation: phonePulse 2.5s infinite;
+}
+
+@keyframes phonePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.6); }
+  70%  { box-shadow: 0 0 0 12px rgba(0, 102, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0); }
+}
+
+.btn-wa-anim {
+  animation: waFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes waFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+footer {
+  background-color: #0f172a;
+  color: #cbd5e1;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 768px) {
+  .product-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .product-title {
+    font-size: 2.2rem;
+  }
+
+  .product-list li {
+    justify-content: center;
+  }
+
+  .band-orange .features-flank {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #hero {
+    min-height: 70vh;
+  }
+
+  .ai-box {
+    padding: 30px 20px;
+  }
+}
+
