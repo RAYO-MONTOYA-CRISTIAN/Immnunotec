@@ -17,15 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Creamos una función que hace ambas cosas: pinta el menú y aparece el texto
     function manejarScroll() {
         // A. Cambiar color del Navbar de transparente a Azul
-        if (nav) {
-            if (window.scrollY > 50) {
-                nav.classList.remove('bg-transparent', 'border-transparent');
-                nav.classList.add('bg-blue-600/95', 'backdrop-blur-md', 'border-white/10', 'shadow-md');
-            } else {
-                nav.classList.add('bg-transparent', 'border-transparent');
-                nav.classList.remove('bg-blue-600/95', 'backdrop-blur-md', 'border-white/10', 'shadow-md');
-            }
-        }
+
+        /* if (nav) {
+              if (window.scrollY > 50) {
+                  nav.classList.remove('bg-transparent', 'border-transparent');
+                  // Usamos el color corporativo bg-[#0133a2]
+                  nav.classList.add('bg-[#0133a2]', 'backdrop-blur-md', 'border-white/10', 'shadow-md');
+              } else {
+                  nav.classList.add('bg-transparent', 'border-transparent');
+                  // Aseguramos de remover el color corporativo al volver arriba
+                  nav.classList.remove('bg-[#0133a2]', 'backdrop-blur-md', 'border-white/10', 'shadow-md');
+              }
+          }*/
 
         // B. Mostrar los textos y productos (efecto reveal)
         reveals.forEach(el => {
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initParticles() {
         if (!canvas) return;
         width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+        height = canvas.height = document.getElementById('hero').clientHeight;
         particles = [];
         const numParticles = window.innerWidth > 768 ? 400 : 150;
 
@@ -100,46 +103,123 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 3.1 CARRUSEL MULTIMEDIA DINÁMICO ---
 
-    // Lista de elementos multimedia consecutivos (imágenes y videos)
-    const heroMediaList = [
-        { type: 'image', src: 'IMGS/img1.jpg' },
-        { type: 'video', src: 'Desktop 2026-07-14 23-13-54.mp4' }, // Tu archivo de video MP4 local
-        { type: 'image', src: 'IMGS/img10.jpg' },
-        { type: 'image', src: 'IMGS/img11.jpg' }
+    // 1. Lista EXCLUSIVA PARA COMPUTADORA (Tus imágenes y videos normales)
+    const heroMediaDesktop = [
+        { type: 'image', src: 'IMGS/portadaprincipal.jpg' },
+        // AQUÍ AGREGAMOS LA DIAPOSITIVA DE 3 IMÁGENES
+        { 
+            type: 'group', 
+            images: [
+                'IMGS/img31.jpg', // Reemplaza con tu 1ra imagen (ej. Aminoácido)
+                'IMGS/img29.jpg', // Reemplaza con tu 2da imagen (ej. Proteína)
+                'IMGS/img30.jpg'  // Reemplaza con tu 3ra imagen (ej. Termogénico)
+            ] 
+        },
+        { type: 'video', src: 'IMGS/IMMUNOTEC_VIDEO_PANAMA.mp4' },
+        { type: 'image', src: 'IMGS/E.jpg' },
     ];
 
+    // 2. Lista EXCLUSIVA PARA CELULAR (Tus afiches e infografíass)
+    const heroMediaMobile = [
+        { type: 'image', src: 'IMGS/img18.jpg' }, // 1er afiche
+        { type: 'image', src: 'IMGS/img31.jpg' }, // 1er afiche
+        { type: 'image', src: 'IMGS/img29.jpg' }, // 1er afiche
+        { type: 'image', src: 'IMGS/img30.jpg' }, // 1er afiche
+        { type: 'video', src: 'IMGS/IMMUNOTEC__CELULAR.mp4' },  // 3er afiche
+    ];
+
+    // 3. El sistema detecta el tamaño de la pantalla
+    const isMobile = window.innerWidth <= 768;
+    const heroMediaList = isMobile ? heroMediaMobile : heroMediaDesktop;
+
     const mediaContainer = document.getElementById('hero-media-container');
+
+    // NUEVO: Seleccionamos las flechas y los puntos del HTML
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const dots = document.querySelectorAll('.hero-dot');
+
     let currentMediaIndex = 0;
 
     // CONFIGURACIÓN DE TIEMPOS (en milisegundos)
     const IMAGE_DURATION = 6000;      // Cuánto dura cada imagen en pantalla (6 segundos)
-    const PARTICLES_DURATION = 8000;  // Cuánto tiempo se muestra la animación de partículas tras ocultarse el preloader (8 segundos)
+    const PARTICLES_DURATION = 0;
 
     let timeoutId;
 
     if (mediaContainer && heroMediaList.length > 0) {
 
-        // Generar dinámicamente los elementos multimedia en el DOM para iniciar su precarga en segundo plano
+        // Generar dinámicamente los elementos multimedia en el DOM
         heroMediaList.forEach((media, index) => {
             let el;
             if (media.type === 'video') {
                 el = document.createElement('video');
                 el.src = media.src;
-                el.muted = true;       // Requerido por navegadores para permitir reproducción automática
-                el.playsInline = true;  // Requerido para reproducción en línea en dispositivos móviles (iOS/Android)
+                el.muted = true;
+                el.playsInline = true;
                 el.preload = 'auto';
-
-                // Evento nativo: avanza al siguiente slide cuando el video actual termina de reproducirse
                 el.addEventListener('ended', nextMedia);
+                el.className = 'hero-media-item';
+            } else if (media.type === 'group') {
+                // Crea el contenedor principal para las 3 imágenes
+                el = document.createElement('div');
+                el.className = 'hero-media-item hero-media-group';
+                
+                // Añade cada imagen con su capa oscura y botón
+                media.images.forEach(imgSrc => {
+                    // 1. Contenedor de la tarjeta
+                    const card = document.createElement('div');
+                    card.className = 'promo-card';
+                    
+                    // 2. Imagen
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    
+                    // 3. Capa oscura
+                    const overlay = document.createElement('div');
+                    overlay.className = 'promo-overlay';
+                    
+                    // 4. Botón "Comprar"
+                    const btn = document.createElement('a');
+                    btn.className = 'promo-btn';
+                    btn.href = '#'; // Aquí puedes poner el link de WhatsApp o del carrito
+                    btn.textContent = 'COMPRAR';
+                    
+                    // Ensamblar todo
+                    card.appendChild(img);
+                    card.appendChild(overlay);
+                    card.appendChild(btn);
+                    el.appendChild(card);
+                });
             } else {
                 el = document.createElement('img');
                 el.src = media.src;
+                el.className = 'hero-media-item';
             }
 
-            el.className = 'hero-media-item';
             el.id = `hero-media-${index}`;
             mediaContainer.appendChild(el);
         });
+
+        // Ocultar los puntos sobrantes si la lista de celular tiene menos elementos
+        dots.forEach((dot, index) => {
+            if (index >= heroMediaList.length) {
+                dot.style.display = 'none';
+            }
+        });
+
+        // NUEVO: Función para actualizar visualmente los puntos
+        function updateDots(index) {
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('opacity-40');
+                    dot.classList.add('opacity-100');
+                } else {
+                    dot.classList.add('opacity-40');
+                    dot.classList.remove('opacity-100');
+                }
+            });
+        }
 
         // Función para activar y reproducir la diapositiva correspondiente
         function showMedia(index) {
@@ -150,19 +230,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.remove('active-media');
                 if (item.tagName === 'VIDEO' && i !== index) {
                     item.pause();
-                    item.currentTime = 0; // Reiniciamos el video para su próxima visualización
+                    item.currentTime = 0; // Reiniciamos el video
                 }
             });
 
             const currentItem = document.getElementById(`hero-media-${index}`);
             if (currentItem) {
                 currentItem.classList.add('active-media');
+                updateDots(index); // Cambiamos el punto iluminado
 
                 const mediaData = heroMediaList[index];
                 if (mediaData.type === 'video') {
                     currentItem.play().catch(e => {
-                        console.warn("La reproducción automática del video fue bloqueada por el navegador:", e);
-                        nextMedia(); // Fallback por si hay restricciones de autoplay
+                        console.warn("Autoplay bloqueado:", e);
+                        nextMedia();
                     });
                 } else {
                     timeoutId = setTimeout(nextMedia, IMAGE_DURATION);
@@ -170,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // Funciones de navegación
         function nextMedia() {
             currentMediaIndex++;
             if (currentMediaIndex >= heroMediaList.length) {
@@ -178,29 +260,45 @@ document.addEventListener('DOMContentLoaded', () => {
             showMedia(currentMediaIndex);
         }
 
-        // Programar la transición: de Partículas a Carrusel Multimedia
-        // Se calcula sumando el tiempo de carga del splash screen (2.8s) + el tiempo que definiste para ver tus partículas
-        setTimeout(() => {
+        function prevMedia() {
+            currentMediaIndex--;
+            if (currentMediaIndex < 0) {
+                currentMediaIndex = heroMediaList.length - 1;
+            }
+            showMedia(currentMediaIndex);
+        }
 
-            // 1. Desvanecer la animación de partículas
+        // NUEVO: Escuchar clics en flechas
+        if (btnNext) btnNext.addEventListener('click', nextMedia);
+        if (btnPrev) btnPrev.addEventListener('click', prevMedia);
+
+        // NUEVO: Escuchar clics en cada punto
+        dots.forEach((dot) => {
+            dot.addEventListener('click', (e) => {
+                const clickedIndex = parseInt(e.target.getAttribute('data-index'));
+                if (clickedIndex < heroMediaList.length) {
+                    currentMediaIndex = clickedIndex;
+                    showMedia(currentMediaIndex);
+                }
+            });
+        });
+
+        // Programar la transición inicial
+        setTimeout(() => {
+            const canvas = document.getElementById('hero-canvas');
             if (canvas) {
                 canvas.classList.add('fade-out');
             }
 
-            // 2. Mostrar el contenedor del carrusel multimedia
             mediaContainer.classList.add('fade-in');
-
-            // 3. Comenzar la reproducción del carrusel
             showMedia(currentMediaIndex);
 
-            // 4. Detener de forma definitiva el renderizado de partículas tras completarse la transición CSS (1.5s)
             setTimeout(() => {
                 runParticles = false;
             }, 1500);
 
         }, 2800 + PARTICLES_DURATION);
     }
-
     // --- 4. THREE.JS ENGINE PARA PRODUCTOS ---
     const canvas3DContainers = document.querySelectorAll('.canvas-3d-wrapper');
     const renderersData = [];
@@ -361,77 +459,145 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = false; loading.style.display = 'none';
         }
     });
-    // Seleccionamos el formulario completo y el input
+    
+    // Seleccionamos los elementos del buscador
     const formBusqueda = document.getElementById('form-busqueda');
     const inputBuscar = document.getElementById('buscador-input');
+    const btnToggleBuscador = document.getElementById('btn-toggle-buscador');
 
-    // 1. Escuchamos el 'submit' (funciona tanto si dan clic en un botón como si presionan ENTER)
-    formBusqueda.addEventListener('submit', function (evento) {
-        // Esto es crucial: evita que la página parpadee o se recargue al dar Enter
-        evento.preventDefault();
+    // --- 1. NUEVA LÓGICA: Desplegar buscador debajo en móvil ---
+    if (btnToggleBuscador && formBusqueda) {
+        btnToggleBuscador.addEventListener('click', (e) => {
+            // Solo aplicamos el efecto en pantallas móviles (menores a 768px)
+            if (window.innerWidth < 768) {
+                // Evitamos que el botón intente enviar el formulario vacío al tocarlo
+                e.preventDefault(); 
+                
+                // Mostramos u ocultamos el contenedor completo del formulario
+                formBusqueda.classList.toggle('hidden');
 
-        const terminoDeBusqueda = inputBuscar.value.trim().toLowerCase();
-
-        if (terminoDeBusqueda === "") {
-            return; // Si dan enter sin escribir nada, simplemente no hace nada
-        }
-
-        // Buscamos las coincidencias en los títulos de tu página
-        const elementosBuscables = document.querySelectorAll('h2, h3, .producto-titulo');
-        let encontrado = false;
-
-        elementosBuscables.forEach(elemento => {
-            const textoElemento = elemento.textContent.toLowerCase();
-
-            if (textoElemento.includes(terminoDeBusqueda)) {
-                // Scroll suave hacia el elemento
-                elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Efecto visual: se pinta de azul por 2 segundos para que el usuario lo note
-                elemento.style.transition = "color 0.5s";
-                elemento.style.color = "#38bdf8";
-                setTimeout(() => elemento.style.color = "", 2000);
-
-                encontrado = true;
+                // Hacemos focus automático para que aparezca el teclado del celular al abrirse
+                if (!formBusqueda.classList.contains('hidden')) {
+                    inputBuscar.focus();
+                }
             }
         });
+    }
 
-        if (!encontrado) {
-            alert("No se encontraron resultados para: " + terminoDeBusqueda);
-        }
-    });
+    // --- 2. LÓGICA DE BÚSQUEDA Y ALERTA PERSONALIZADA ---
+    
+    // Función para crear una alerta visual elegante (Toast) en lugar del alert normal
+    function mostrarNotificacion(mensaje) {
+        // Elimina notificaciones previas si el usuario hace clics rápidos
+        const alertaPrevia = document.getElementById('alerta-busqueda');
+        if(alertaPrevia) alertaPrevia.remove();
 
-    // --- LÓGICA DEL MENÚ HAMBURGUESA (Mobile First) ---
+        const alerta = document.createElement('div');
+        alerta.id = 'alerta-busqueda';
+        // Estilos Tailwind para un cuadrito rojo centrado arriba
+        alerta.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-md shadow-2xl z-[9999] text-sm font-bold text-center w-11/12 max-w-sm transition-opacity duration-300';
+        alerta.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i> ${mensaje}`;
+        
+        document.body.appendChild(alerta);
+
+        // Desaparece automáticamente a los 3 segundos
+        setTimeout(() => {
+            alerta.style.opacity = '0';
+            setTimeout(() => alerta.remove(), 300);
+        }, 3000);
+    }
+
+    // Lógica al presionar ENTER o enviar la búsqueda
+    if (formBusqueda) {
+        formBusqueda.addEventListener('submit', function (evento) {
+            // Esto es crucial: evita que la página parpadee o se recargue al dar Enter
+            evento.preventDefault();
+
+            const terminoDeBusqueda = inputBuscar.value.trim().toLowerCase();
+
+            if (terminoDeBusqueda === "") {
+                return; // Si dan enter sin escribir nada, simplemente no hace nada
+            }
+
+            // Buscamos las coincidencias en los títulos de tu página
+            const elementosBuscables = document.querySelectorAll('h2, h3, .producto-titulo');
+            let encontrado = false;
+
+            elementosBuscables.forEach(elemento => {
+                const textoElemento = elemento.textContent.toLowerCase();
+
+                if (textoElemento.includes(terminoDeBusqueda)) {
+                    // Scroll suave hacia el elemento
+                    elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Efecto visual: se pinta de azul por 2 segundos para que el usuario lo note
+                    elemento.style.transition = "color 0.5s";
+                    elemento.style.color = "#0133a2";
+                    setTimeout(() => elemento.style.color = "", 2000);
+
+                    encontrado = true;
+                }
+            });
+
+            if (!encontrado) {
+                // Usamos la nueva alerta en lugar del alert() genérico
+                mostrarNotificacion("Producto no encontrado. Intenta con otra palabra.");
+            } else {
+                // Ocultamos el buscador en móvil si la búsqueda fue exitosa
+                if (window.innerWidth < 768) {
+                    formBusqueda.classList.add('hidden');
+                }
+            }
+        });
+    }
+    
+    // --- LÓGICA DEL MENÚ HAMBURGUESA (Overlay Pantalla Completa) ---
     const btnMenuMobile = document.getElementById('btn-menu-mobile');
+    const btnCloseMenu = document.getElementById('btn-close-menu'); // El nuevo botón X
     const menuMobile = document.getElementById('menu-mobile');
     const enlacesMobile = menuMobile.querySelectorAll('a');
-    const iconoMenu = btnMenuMobile.querySelector('i');
 
-    // 1. Abrir/Cerrar menú al tocar la hamburguesa
-    btnMenuMobile.addEventListener('click', () => {
-        // Alternamos entre ocultar ('hidden') y mostrar ('flex')
-        menuMobile.classList.toggle('hidden');
-        menuMobile.classList.toggle('flex');
+    // 1. Abrir menú al tocar la hamburguesa
+    if (btnMenuMobile && menuMobile) {
+        btnMenuMobile.addEventListener('click', () => {
+            menuMobile.classList.remove('hidden');
+            menuMobile.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
+        });
+    }
 
-        // Opcional: Cambiar el ícono de hamburguesa a una "X" al abrir
-        if (menuMobile.classList.contains('hidden')) {
-            iconoMenu.classList.remove('fa-times');
-            iconoMenu.classList.add('fa-bars');
-        } else {
-            iconoMenu.classList.remove('fa-bars');
-            iconoMenu.classList.add('fa-times');
-        }
-    });
+    // 2. Cerrar menú al tocar la 'X'
+    if (btnCloseMenu && menuMobile) {
+        btnCloseMenu.addEventListener('click', () => {
+            menuMobile.classList.add('hidden');
+            menuMobile.classList.remove('flex');
+            document.body.style.overflow = ''; // Reactiva el scroll del fondo
+        });
+    }
 
-    // 2. Cerrar el menú automáticamente cuando eligen una opción
+    // 3. Cerrar el menú automáticamente cuando eligen una opción
     enlacesMobile.forEach(enlace => {
         enlace.addEventListener('click', () => {
             menuMobile.classList.add('hidden');
             menuMobile.classList.remove('flex');
-            iconoMenu.classList.remove('fa-times');
-            iconoMenu.classList.add('fa-bars');
+            document.body.style.overflow = ''; // Reactiva el scroll del fondo
         });
-    });
+    }
+    );
+    // --- LÓGICA DEL FAVICON ANIMADO (PESTAÑA) ---
+    /*const favicon = document.getElementById('icono-pestana');
+    let esAzul = true;
 
-
-});
+     Cambia el ícono cada 2000 milisegundos (2 segundos)
+    if (favicon) {
+        setInterval(() => {
+            if (esAzul) {
+                favicon.href = 'IMGS/favicon-blanco.svg';
+            } else {
+                favicon.href = 'IMGS/favicon-azul.svg';
+            }
+            // Invertimos el valor para la siguiente vez
+            esAzul = !esAzul; 
+        }, 3000);
+    }*/
+})

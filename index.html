@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immunotec</title>
 
+    <link rel="icon" type="image/svg+xml" href="IMGS/favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -46,10 +47,19 @@
             </svg>
         </div>
     </div>
-    <nav id="navbar"
-        class="fixed top-0 left-0 w-full flex justify-between items-center px-4 md:px-8 py-3 text-white z-50 bg-[#0133a2] border-b border-transparent transition-all duration-300 shadow-md">
 
-        <div class="flex items-center gap-4 logo-container">
+    <nav id="navbar" class="fixed top-0 left-0 w-full px-4 py-3 text-white z-50 bg-[#0133a2] border-b border-transparent transition-all duration-300
+           flex justify-between items-center
+           md:grid md:grid-cols-[auto_1fr] md:gap-y-3 md:items-center md:px-8 md:py-1">
+
+        <!-- 1. Menú Hamburguesa (Izquierda en celular) -->
+        <button id="btn-menu-mobile" class="text-white text-2xl md:hidden focus:outline-none p-1 cursor-pointer z-20">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- 2. Logo Immunotec -->
+        <div
+            class="flex items-center logo-container z-10 absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0 md:col-start-1 md:row-span-2 md:self-center">
             <svg width="100%" height="100%" viewBox="0 0 226 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_701_3387)">
                     <path d="M55.6543 0.0283203H58.8575V25.5008H55.6543V0.0283203Z" fill="white" />
@@ -97,52 +107,142 @@
             </svg>
         </div>
 
-        <ul class="hidden md:flex gap-8 text-sm absolute left-1/2 transform -translate-x-1/2">
-            <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-            <li><a href="#productos" class="nav-link">Productos</a></li>
-            <li><a href="#ciencia" class="nav-link">Ciencia</a></li>
-            <li><a href="#negocio" class="nav-link">Negocio</a></li>
-            <li><a href="#contacto" class="nav-link">Contáctanos</a></li>
+        <!-- 3. Menú PC (Oculto en celular, centrado en PC) -->
+        <ul
+            class="hidden md:flex text-base lg:text-xl gap-4 lg:gap-10 font-medium tracking-wide z-10 md:col-start-2 lg:row-start-2 lg:justify-self-center lg:-mt-1 lg:-ml-16">
+            <li><a href="#nosotros" class="nav-link hover:text-blue-200 transition-colors">Quiénes Somos</a></li>
+            <li><a href="#productos" class="nav-link hover:text-blue-200 transition-colors">Nuestros Productos</a></li>
+            <li><a href="#ciencia" class="nav-link hover:text-blue-200 transition-colors">Base Científica</a></li>
+            <li><a href="#negocio" class="nav-link hover:text-blue-200 transition-colors">Trabaja con Nosotros </a></li>
+            <li><a href="#contacto" class="nav-link hover:text-blue-200 transition-colors">Soporte y contacto</a></li>
         </ul>
 
-        <div class="flex items-center gap-2 md:gap-4">
-            <form id="form-busqueda" class="relative group">
-                <i
-                    class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-white z-10 pointer-events-none text-xs md:text-sm"></i>
-                <input type="text" id="buscador-input" placeholder="Buscar"
-                    class="bg-white/10 hover:bg-white/20 focus:bg-white/20 border border-white/20 text-white placeholder-white/80 rounded-full py-1.5 pl-8 pr-3 outline-none text-xs md:text-sm w-28 md:w-48 transition-all shadow-sm backdrop-blur-md relative">
-            </form>
-
-            <button id="btn-menu-mobile" class="text-white text-xl md:hidden focus:outline-none p-1 cursor-pointer">
-                <i class="fas fa-bars"></i>
+        <!-- 4. Lupa y Buscador Desplegable -->
+        <div class="flex items-center justify-end z-20 md:col-start-2 md:row-start-1 md:w-full md:mt-2.5 md:ml-40">
+            <!-- Botón Lupa (Solo Móvil) -->
+            <button type="button" id="btn-toggle-buscador" class="text-white text-xl p-1 focus:outline-none md:hidden">
+                <i class="fas fa-search"></i>
             </button>
+
+            <!-- Buscador: Debajo en móvil, barra superior central en PC -->
+            <form id="form-busqueda"
+                class="absolute top-full left-0 w-full bg-[#0133a2] pt-0 pb-3 px-3 hidden shadow-lg md:shadow-none md:flex md:static md:w-full md:bg-transparent md:p-0 z-10 transition-all md:justify-start">
+                <div class="relative w-full md:w-auto flex items-center md:justify-start">
+                    <!-- Icono lupa: Gris en PC -->
+                    <i
+                        class="fas fa-search absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-500 z-10 pointer-events-none text-sm md:text-base"></i>
+
+                    <!-- Input -->
+                    <input type="text" id="buscador-input" placeholder="Buscar producto..."
+                        class="w-full bg-white text-gray-800 placeholder-gray-500 rounded-md py-2.5 pl-10 pr-3 outline-none text-sm shadow-inner md:bg-white md:text-gray-800 md:placeholder-gray-500 md:border-none md:rounded-lg md:py-2.5 md:pl-11 md:w-[450px] lg:w-[700px] md:focus:ring-2 md:focus:ring-blue-300 md:shadow transition-all">
+                </div>
+            </form>
+    
         </div>
 
+        <!-- Menú móvil desplegable (Intacto) -->
         <div id="menu-mobile"
-            class="absolute top-full left-0 w-full bg-slate-900 border-t border-white/10 flex-col py-6 gap-6 hidden shadow-2xl md:hidden">
-            <a href="#nosotros" class="text-white text-center text-lg hover:text-blue-300">Nosotros</a>
-            <a href="#productos" class="text-white text-center text-lg hover:text-blue-300">Productos</a>
-            <a href="#ciencia" class="text-white text-center text-lg hover:text-blue-300">Ciencia</a>
-            <a href="#negocio" class="text-white text-center text-lg hover:text-blue-300">Negocio</a>
-            <a href="#contacto" class="text-white text-center text-lg hover:text-blue-300">Contáctanos</a>
+            class="fixed inset-0 w-full h-full bg-black/80 backdrop-blur-sm flex-col items-center justify-center hidden z-[100] md:hidden transition-all duration-300">
+            <button id="btn-close-menu"
+                class="absolute top-6 left-1/2 transform -translate-x-1/2 text-white text-4xl focus:outline-none p-4 hover:text-gray-300">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex flex-col w-4/5 max-w-sm text-center mt-12">
+                <a href="#nosotros"
+                    class="text-white text-lg font-bold uppercase py-5 border-b border-white/20 hover:text-blue-400 tracking-wider transition-colors">Nosotros</a>
+                <a href="#productos"
+                    class="text-white text-lg font-bold uppercase py-5 border-b border-white/20 hover:text-blue-400 tracking-wider transition-colors">Productos</a>
+                <a href="#ciencia"
+                    class="text-white text-lg font-bold uppercase py-5 border-b border-white/20 hover:text-blue-400 tracking-wider transition-colors">Ciencia</a>
+                <a href="#negocio"
+                    class="text-white text-lg font-bold uppercase py-5 border-b border-white/20 hover:text-blue-400 tracking-wider transition-colors">Oportunidad
+                    de Negocio</a>
+                <a href="#contacto"
+                    class="text-white text-lg font-bold uppercase py-5 hover:text-blue-400 tracking-wider transition-colors">Contáctanos</a>
+            </div>
         </div>
     </nav>
 
-    <section id="hero" class="pt-24 md:pt-28 relative overflow-hidden h-screen flex items-center">
+    <!-- ========================================== -->
+    <!-- 2. ESPACIO DEL BOTÓN (Solo en celular)     -->
+    <!-- ========================================== -->
+    <!-- Oculto en pantallas grandes con md:hidden -->
+    <div class="w-full bg-[#0133a2] pt-16 pb-3 flex justify-center items-center md:hidden">
+        <a href="https://www.immunotec.com/rosarayo" target="_blank"
+            class="bg-white text-[#0133a2] font-extrabold px-6 py-2 text-[10px] rounded-sm uppercase tracking-widest flex items-center gap-1.5 hover:bg-gray-200 transition-colors shadow-sm">
+            VISITAR SITIO WEB OFICIAL <i class="fas fa-angle-double-right text-sm"></i>
+        </a>
+    </div>
 
+    <!-- En celular mantiene h-screen y pt-24. En PC cambia a h-[82vh], quita el pt-24 y centra el contenido en columna -->
+    <section id="hero"
+        class="pt-24 relative overflow-hidden h-screen flex items-center md:pt-0 md:h-[90vh] md:flex-col md:justify-center">
+
+        <!-- Fondos multimedia (Intactos) -->
         <div id="hero-media-container" class="absolute top-0 left-0 w-full h-full z-0 opacity-0"></div>
 
         <canvas id="hero-canvas" class="absolute top-0 left-0 w-full h-full z-10"></canvas>
 
-        <div class="absolute top-0 left-0 w-full h-full bg-[#0133a2]/50 z-20 pointer-events-none"></div>
+        <!-- Capa oscura (Cambié el azul por un tono oscuro neutral solo en PC para resaltar el estilo Tesla) 
+        <div class="absolute top-0 left-0 w-full h-full bg-black/30 z-20 pointer-events-none hidden md:block"></div>-->
 
-        <div class="hero-content reveal relative z-30 w-full max-w-6xl mx-auto px-5">
-            <h1 class="hero-title text-white">Eleva tu salud<br>y bienestar</h1>
-            <p class="text-white text-lg max-w-2xl mb-8">Descubre el poder de la ciencia biotecnológica enfocada en el
-                glutatión. La innovación que transforma vidas, ahora a tu alcance.</p>
-            <a href="#productos" class="btn-primary">Ver productos</a>
+        <!-- FLECHAS DE NAVEGACIÓN (Visibles en Celular y PC) -->
+        <button id="btn-prev"
+            class="absolute left-2 md:left-8 top-1/2 transform -translate-y-1/2 text-white text-4xl md:text-5xl z-40 opacity-60 hover:opacity-100 p-2 cursor-pointer transition-opacity">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="btn-next"
+            class="absolute right-2 md:right-8 top-1/2 transform -translate-y-1/2 text-white text-4xl md:text-5xl z-40 opacity-60 hover:opacity-100 p-2 cursor-pointer transition-opacity">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- LOS 4 PUNTOS / PAGINACIÓN (Visibles en Celular y PC) -->
+        <div class="absolute bottom-8 md:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-3 md:gap-4 z-40"
+            id="hero-dots">
+            <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white opacity-100 transition-opacity"
+                data-index="0"></button>
+            <button
+                class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white opacity-40 hover:opacity-100 transition-opacity"
+                data-index="1"></button>
+            <button
+                class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white opacity-40 hover:opacity-100 transition-opacity"
+                data-index="2"></button>
+            <button
+                class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white opacity-40 hover:opacity-100 transition-opacity"
+                data-index="3"></button>
+            <button
+                class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white opacity-40 hover:opacity-100 transition-opacity"
+                data-index="4"></button>
         </div>
-        
+
+        <!-- COONTENIDO PRINCIPAL ESTILO TESLA (Oculto en celular, visible y centrado solo en PC) -->
+        <!-- Cambiamos md:block por md:flex md:flex-col para poder centrar todo perfectamente -->
+        <div
+            class="hero-content reveal relative z-30 w-full max-w-4xl mx-auto px-5 hidden md:flex md:flex-col md:items-center text-center">
+
+            <!--<h1 class="text-white text-5xl font-bold tracking-wide mb-2 drop-shadow-md">
+                Eleva tu salud y bienestar
+            </h1>
+            
+            <p class="text-white text-lg font-medium drop-shadow-md mb-8 max-w-2xl">
+                Descubre el poder de la ciencia biotecnológica enfocada en el glutatión. La innovación que transforma vidas, ahora a tu alcance.
+            </p>
+            
+
+            <div class="flex gap-4">
+
+                <a href="#productos" class="bg-[#3e6ae1] text-white w-64 py-2.5 rounded text-center text-sm font-semibold transition-colors hover:bg-blue-600 backdrop-blur-sm">
+                    Ver productos
+                </a>
+                
+
+                <a href="#contacto" class="bg-white text-gray-800 w-64 py-2.5 rounded text-center text-sm font-semibold transition-colors hover:bg-gray-100 backdrop-blur-sm">
+                    Saber más
+                </a>
+            </div>-->
+
+        </div>
+
     </section>
 
     <section id="nosotros" class="py-24 bg-white text-slate-800 relative">
@@ -188,6 +288,7 @@
             </div>
         </div>
     </section>
+    
 
     <div id="productos">
 
@@ -203,7 +304,7 @@
                         <li><i class="fas fa-arrow-right"></i> Previene la descalcificación ósea.</li>
                         <li><i class="fas fa-arrow-right"></i> Combate la inflamación celular.</li>
                     </ul>
-                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Immunocal%20Platinum" class="btn-product"
+                    <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Platinum" class="btn-product"
                         target="_blank">Comprar Platinum</a>
                 </div>
                 <!-- NUEVA IMAGEN PLATINUM -->
@@ -250,7 +351,7 @@
                         <li><i class="fas fa-check text-white"></i> Combate la inflamación celular</li>
                     </ul>
                     <br>
-                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Omega%20Gen%20V" class="btn-product mt-4"
+                    <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Omega%20Gen%20V" class="btn-product mt-4"
                         style="background: white; color: #f97316;" target="_blank">Adquirir Omega</a>
                 </div>
             </div>
@@ -283,7 +384,7 @@
                             <li><i class="fas fa-circle text-[8px]"></i> Sin gluten. Sin OGM</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Immunocal%20Sport" class="btn-product"
+                    <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Sport" class="btn-product"
                         style="background: #0133a2; border:none;" target="_blank">Comprar Sport</a>
                 </div>
             </div>
@@ -301,7 +402,7 @@
                         <li><i class="fas fa-arrow-right"></i> Más de 50 frutas y verduras orgánicas.</li>
                         <li><i class="fas fa-arrow-right"></i> Extracto de semilla de brócoli.</li>
                     </ul>
-                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Optimizer" class="btn-product"
+                    <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Optimizer" class="btn-product"
                         target="_blank">Adquirir Optimizer</a>
                 </div>
                 <!-- NUEVA IMAGEN OPTIMIZER -->
@@ -329,7 +430,7 @@
                         <li><i class="fas fa-check text-blue-300"></i> Desintoxicador celular maestro.</li>
                         <li><i class="fas fa-check text-blue-300"></i> Incrementa la energía natural.</li>
                     </ul>
-                    <a href="https://wa.me/51955900486?text=Quiero%20comprar%20Immunocal%20Clásico" class="btn-product"
+                    <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Clásico" class="btn-product"
                         style="background: white; color: #0133a2;" target="_blank">Comprar Clásico</a>
                 </div>
             </div>
@@ -445,7 +546,7 @@
                             Immunotec).
                         </li>
                     </ul>
-                    <a href="https://wa.me/51955900486?text=Quiero%20conocer%20el%20plan%20de%20negocios%20de%20Immunotec"
+                    <a href="https://wa.me/51995309712?text=Quiero%20conocer%20el%20plan%20de%20negocios%20de%20Immunotec"
                         target="_blank"
                         class="bg-[#0133a2] hover:bg-blue-900 text-white px-8 py-4 rounded-full font-bold text-lg transition-transform hover:-translate-y-1 inline-flex items-center gap-3 shadow-lg">
                         <i class="fab fa-whatsapp text-2xl text-[#25d366]"></i> Inicia tu negocio hoy
@@ -519,7 +620,31 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/51955900486" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- BOTONES FLOTANTES DE CONTACTO -->
+    <div class="fixed bottom-0 left-0 w-full h-32 pointer-events-none z-[1000]">
+
+        <!-- Botón Llamada (Arriba en celular, al mismo nivel en PC) -->
+        <div class="absolute bottom-14 md:bottom-6 left-2 md:left-4 flex items-center pointer-events-auto">
+            <!-- Icono circular del teléfono -->
+            <a href="tel:+51995309712"
+                class="btn-phone-anim relative z-20 w-12 h-12 md:w-14 md:h-14 bg-[#0066ff] text-white rounded-full flex items-center justify-center text-xl md:text-2xl shadow-xl">
+                <i class="fas fa-phone-alt"></i>
+            </a>
+            <!-- Texto "Llámanos ahora" ajustado para ser un poco más delgado -->
+            <div
+                class="relative z-10 bg-[#7baaf7]/95 backdrop-blur-sm text-white px-3 py-2 md:px-4 md:py-2.5 rounded-xl -ml-5 pl-7 text-[12px] md:text-xs font-semibold shadow-md">
+                  Llámanos ahora
+            </div>
+        </div>
+
+        <!-- Botón WhatsApp (Abajo en celular, al mismo nivel en PC, diseño más delgado) -->
+        <a href="https://wa.me/51995309712" target="_blank"
+            class="btn-wa-anim absolute bottom-2 md:bottom-6 right-2 md:right-4 bg-[#08c056] text-white px-4 py-2 md:px-5 md:py-2.5 rounded-full flex items-center gap-2 shadow-xl hover:bg-[#0b5c21] transition-colors pointer-events-auto">
+            <i class="fab fa-whatsapp text-xl md:text-2xl"></i>
+            <span class="font-bold text-[12px] md:text-sm tracking-wide">¡Escríbenos por WhatsApp!</span>
+        </a>
+
+    </div>
 
     <script src="./js/app.js"></script>
 </body>

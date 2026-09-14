@@ -104,6 +104,7 @@ nav {
     position: fixed; top: 0; width: 100%; z-index: 1000;
     transition: background 0.3s ease, padding 0.3s ease;
     padding: 20px 0;
+    background-color: var(--bg-hero);
 }
 /*nav.scrolled {
     background: rgba(2, 8, 19, 0.95); backdrop-filter: blur(10px); padding: 15px 0;
@@ -114,7 +115,7 @@ nav {
 }
 .nav-link::after {
     content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
-    background: #38bdf8; transition: width 0.3s ease;
+    background: #ffffff; transition: width 0.3s ease;
 }
 .nav-link:hover::after { width: 100%; }
 
@@ -127,7 +128,7 @@ nav {
 
 /* --- HERO SECTION --- */
 #hero {
-    height: 100vh; background-color: var(--bg-hero); position: relative;
+     background-color: var(--bg-hero); position: relative;
     display: flex; align-items: center; overflow: hidden;
 }
 #hero-canvas {
@@ -213,21 +214,62 @@ nav {
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* Floating WhatsApp */
-.float-wa {
-    position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
-    background: #25d366; color: white; border-radius: 50%; display: flex;
-    align-items: center; justify-content: center; font-size: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; transition: transform 0.3s;
-}
-.float-wa:hover { transform: scale(1.1); }
+/* --- ANIMACIONES PARA BOTONES FLOTANTES DE CONTACTO --- */
 
+/* 1. Animación de "latido" sutil para el botón de llamada */
+.btn-phone-anim {
+    animation: phonePulse 2.5s infinite;
+}
+
+@keyframes phonePulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(0, 123, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
+/* 2. Animación de "flotación" suave para el botón de WhatsApp */
+.btn-wa-anim {
+    animation: waFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes waFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); } /* Sube ligeramente 6 píxeles */
+    100% { transform: translateY(0px); }
+}
+
+/*@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .product-container { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .product-list li { justify-content: center; }
+    .band-orange .features-flank { flex-direction: column; gap: 20px;}
+    nav .hidden { display: none !important; }
+
+    .hero-media-item {
+
+        object-position: 75% center;}
+}*/
 @media (max-width: 768px) {
     .hero-title { font-size: 2.5rem; }
     .product-container { grid-template-columns: 1fr; text-align: center; gap: 30px; }
     .product-list li { justify-content: center; }
     .band-orange .features-flank { flex-direction: column; gap: 20px;}
     nav .hidden { display: none !important; }
+    
+    /* Asegura que el afiche se vea bien centrado */
+    .hero-media-item {
+        object-position: center; 
+    }
+    
+    .hero-media-item {
+        object-position: 75% center; 
+    }
+
+    /* --- CAMBIO PARA LA PORTADA A LA MITAD --- */
+    #hero {
+        height: 50vh !important; /* Obliga a la sección a usar solo el 50% de la pantalla */
+        min-height: 480px !important; /* Medida de seguridad para que el botón no se corte en celulares muy pequeños */
+    }
 }
 /* --- NUEVOS ESTILOS PARA IMÁGENES DE PRODUCTO (TAMAÑO AUMENTADO) --- */
 .product-image-container {
@@ -293,4 +335,101 @@ nav {
 .hero-media-item.active-media {
     opacity: 1;
     z-index: 2;
+}
+
+/* --- ESTILOS PARA LA DIAPOSITIVA DE 3 IMÁGENES --- */
+.hero-media-group {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0px; /* Separación entre las tres imágenes */
+    padding-top: 120px;
+    background-color: #1e1e1e; /* Fondo oscuro similar a tu imagen de referencia */
+}
+
+/* --- CONTENEDOR PRINCIPAL DEL GRUPO --- */
+.hero-media-group {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Para que inicie desde arriba */
+    padding-top: 3px; /* Evita que el menú azul tape las promos */
+    gap: 0px; 
+}
+
+/* --- TARJETA INDIVIDUAL (Contenedor de cada foto) --- */
+.promo-card {
+    position: relative; /* Clave para poder centrar el botón encima */
+    width: 33.333%; 
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Imagen dentro de la tarjeta */
+.promo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* Prioriza la parte superior de la imagen */
+    display: block;
+}
+
+/* --- CAPA OSCURA QUE APARECE --- */
+.promo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Color negro al 65% de opacidad */
+    opacity: 0; /* Invisible por defecto */
+    transition: opacity 0.3s ease-in-out; /* Animación suave */
+}
+
+/* --- BOTÓN DE COMPRAR --- */
+.promo-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%); /* Centrado pero un poquito más abajo */
+    background-color: #0133a2; /* Tu color corporativo */
+    color: #ffffff;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    opacity: 0; /* Invisible por defecto */
+    transition: all 0.3s ease-in-out; /* Animación suave */
+    z-index: 10;
+}
+
+/* Efecto hover del botón */
+.promo-btn:hover {
+    background-color: #0055ff;
+}
+
+/* --- EFECTOS AL PASAR EL MOUSE (HOVER) --- */
+/* Cuando el mouse entra a la tarjeta, la capa oscura aparece */
+.promo-card:hover .promo-overlay {
+    opacity: 1; 
+}
+
+/* Cuando el mouse entra a la tarjeta, el botón aparece y sube un poquito */
+.promo-card:hover .promo-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%); 
+}
+
+/* Adaptación para celular (Opcional) */
+@media (max-width: 768px) {
+    .hero-media-group {
+        flex-direction: column;
+        padding-top: 90px;
+    }
+    .promo-card {
+        width: 100%;
+        height: 33.333%;
+    }
 }
