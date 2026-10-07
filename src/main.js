@@ -39,4 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Escáner IA
   initAiScanner();
 
+  // 7. Formulario de contacto → WhatsApp
+  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name     = document.getElementById('cf-name')?.value?.trim();
+    const phone    = document.getElementById('cf-phone')?.value?.trim();
+    const interest = document.getElementById('cf-interest')?.value;
+    if (!name || !phone || !interest) return;
+    const msg = encodeURIComponent(
+      `¡Hola! Soy ${name} (mi WhatsApp es ${phone}). Me interesa ${interest}. ¿Me das más información?`
+    );
+    window.open(`https://wa.me/51995309712?text=${msg}`, '_blank', 'noopener');
+  });
+
 });

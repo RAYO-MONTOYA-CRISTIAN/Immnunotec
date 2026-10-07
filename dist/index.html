@@ -24,8 +24,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
 
   <!-- Vite entry point -->
-  <script type="module" crossorigin src="/assets/index-CzyBL8yP.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BnhG1tiC.css">
+  <script type="module" crossorigin src="/assets/index-kJAqZwv8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-OrgFtC0Q.css">
 </head>
 
 <body class="loading">
@@ -187,24 +187,32 @@
         <button class="hero-dot w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-white opacity-40 hover:opacity-100 transition-opacity" data-index="4" aria-label="Slide 5"></button>
       </div>
 
-      <!-- Hero copy (visible en desktop sobre el fondo de partículas) -->
-      <div class="hero-content reveal relative z-30 w-full max-w-4xl mx-auto px-5 hidden md:flex md:flex-col md:items-center text-center">
-        <p class="text-blue-200 text-sm font-semibold uppercase tracking-[0.3em] mb-4">Ciencia que transforma vidas</p>
-        <h1 class="text-white text-5xl lg:text-6xl font-display font-bold tracking-wide mb-5 drop-shadow-md leading-tight">
+      <!-- Hero copy (visible en todas las pantallas) -->
+      <div class="hero-content reveal relative z-30 w-full max-w-4xl mx-auto px-5
+                  flex flex-col items-center text-center pt-10 md:pt-0">
+        <p class="text-blue-200 text-xs md:text-sm font-semibold uppercase tracking-[0.3em] mb-3 md:mb-4">
+          Ciencia que transforma vidas
+        </p>
+        <h1 class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold
+                   tracking-wide mb-4 md:mb-5 drop-shadow-md leading-tight">
           Eleva tu salud<br>y bienestar
         </h1>
-        <p class="text-blue-100 text-lg font-medium drop-shadow-md mb-10 max-w-2xl leading-relaxed">
-          Descubre el poder de la biotecnología enfocada en el Glutatión — el antioxidante maestro del cuerpo.
-          La innovación que transforma vidas, ahora a tu alcance.
+        <p class="text-blue-100 text-sm md:text-lg font-medium drop-shadow-md mb-7 md:mb-10
+                  max-w-xl md:max-w-2xl leading-relaxed px-2">
+          Descubre el poder de la biotecnología enfocada en el Glutatión —
+          el antioxidante que recarga los <strong>+4,000 antioxidantes</strong> conocidos por la ciencia.
         </p>
-        <div class="flex gap-4 flex-wrap justify-center">
+        <div class="flex gap-3 md:gap-4 flex-wrap justify-center">
           <a href="#productos"
-            class="bg-white text-[#0133a2] w-56 py-3 rounded-lg text-center text-sm font-bold transition-all hover:bg-blue-50 hover:-translate-y-1 shadow-lg">
+            class="bg-white text-[#0133a2] w-44 md:w-56 py-2.5 md:py-3 rounded-lg text-center
+                   text-sm font-bold transition-all hover:bg-blue-50 hover:-translate-y-1 shadow-lg">
             Ver Productos
           </a>
-          <a href="#contacto"
-            class="bg-white/10 border border-white/30 text-white w-56 py-3 rounded-lg text-center text-sm font-bold transition-all hover:bg-white/20 hover:-translate-y-1 backdrop-blur-sm">
-            Saber Más
+          <a href="#negocio"
+            class="bg-white/10 border border-white/30 text-white w-44 md:w-56 py-2.5 md:py-3
+                   rounded-lg text-center text-sm font-bold transition-all hover:bg-white/20
+                   hover:-translate-y-1 backdrop-blur-sm">
+            Oportunidad de Negocio
           </a>
         </div>
       </div>
@@ -260,6 +268,94 @@
     </section>
 
     <!-- ==========================================
+         GLUTATIÓN — EL ANTIOXIDANTE MAESTRO
+         ========================================== -->
+    <section id="glutation" class="py-24 bg-[#efefef] border-l-[6px] border-[#0133a2]">
+      <div class="max-w-6xl mx-auto px-5 reveal">
+        <div class="text-center mb-14">
+          <span class="inline-block px-4 py-1 rounded-full bg-blue-100 text-[#0133a2] font-bold
+                       text-xs uppercase tracking-wider border border-blue-200 mb-4">
+            La ciencia detrás del producto
+          </span>
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-[#0133a2] mb-4">
+            Immunocal y el Glutatión
+          </h2>
+          <p class="text-slate-500 text-lg max-w-3xl mx-auto leading-relaxed">
+            Asóciate con Immunotec — Pionero en Investigación del Glutatión durante más de 45 años.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-14">
+          <!-- Card 1 -->
+          <div class="bg-white p-8 rounded-2xl shadow-md hover:-translate-y-1 transition-transform duration-300">
+            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-5 border border-blue-100">
+              <i class="fas fa-atom text-xl text-[#0133a2]"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display mb-3 text-slate-800">¿Qué es Immunocal?</h3>
+            <p class="text-slate-600 text-sm leading-relaxed text-justify">
+              El Immunocal, originalmente llamado <strong>HMS-90</strong>, es un complemento alimenticio
+              que suministra todos los aminoácidos que el cuerpo necesita para sus funciones biológicas.
+              Destaca por contener grandes cantidades del aminoácido <strong>cisteína consolidada</strong>,
+              que mediante reacciones metabólicas se transforma en el antioxidante más poderoso del organismo:
+              el <strong>Glutatión</strong>.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white p-8 rounded-2xl shadow-md hover:-translate-y-1 transition-transform duration-300
+                      border-t-4 border-[#0133a2]">
+            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-5 border border-blue-100">
+              <i class="fas fa-shield-alt text-xl text-[#0133a2]"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display mb-3 text-slate-800">
+              El Antioxidante Maestro
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed text-justify">
+              Lo extraordinario es que <strong>ninguno de los más de 4,000 antioxidantes
+              conocidos por la ciencia puede funcionar sin la presencia del Glutatión</strong>.
+              Él los recarga, los recicla y mantiene funciones esenciales de protección celular
+              que ningún otro suplemento puede replicar. Es la molécula que el cuerpo necesita
+              producir —no ingerir— para maximizar su defensa natural.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white p-8 rounded-2xl shadow-md hover:-translate-y-1 transition-transform duration-300">
+            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-5 border border-blue-100">
+              <i class="fas fa-heartbeat text-xl text-[#0133a2]"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display mb-3 text-slate-800">3 Funciones Clave</h3>
+            <ul class="space-y-4 text-sm text-slate-600">
+              <li class="flex gap-3 items-start">
+                <i class="fas fa-check-circle text-[#38bdf8] mt-0.5 shrink-0 text-base"></i>
+                <span><strong class="text-slate-700">Inmunológico:</strong> Activa linfocitos T, neutrófilos y células NK — las defensas más profundas del cuerpo.</span>
+              </li>
+              <li class="flex gap-3 items-start">
+                <i class="fas fa-check-circle text-[#38bdf8] mt-0.5 shrink-0 text-base"></i>
+                <span><strong class="text-slate-700">Desintoxicador celular:</strong> Elimina toxinas y radicales libres donde ningún otro antioxidante llega.</span>
+              </li>
+              <li class="flex gap-3 items-start">
+                <i class="fas fa-check-circle text-[#38bdf8] mt-0.5 shrink-0 text-base"></i>
+                <span><strong class="text-slate-700">Energía y músculo:</strong> Favorece la síntesis proteica y la recuperación post-esfuerzo físico.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="https://wa.me/51995309712?text=Quiero%20conocer%20más%20sobre%20el%20Glutatión"
+            target="_blank" rel="noopener"
+            class="inline-flex items-center gap-3 bg-[#0133a2] hover:bg-blue-900 text-white
+                   px-8 py-4 rounded-full font-bold text-lg transition-transform
+                   hover:-translate-y-1 shadow-xl">
+            <i class="fab fa-whatsapp text-2xl text-[#25d366]"></i>
+            Quiero conocer más sobre el Glutatión
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
          PRODUCTOS
          ========================================== -->
     <div id="productos">
@@ -269,11 +365,23 @@
         <div class="product-container reveal">
           <div>
             <h2 class="product-title">Immunocal Platinum</h2>
-            <p class="product-desc">Fórmula avanzada ideal para personas mayores de 35 años o deportistas. Añade CMP (modulador de inflamación) y RMF (balance de pH).</p>
+            <p class="product-desc">
+              Immunocal Platinum tiene todas las ventajas del Immunocal Clásico, más los componentes
+              exclusivos <strong>CMP</strong> y <strong>RMF</strong> para un apoyo integral a partir de los 35 años.
+            </p>
             <ul class="product-list">
-              <li><i class="fas fa-arrow-right"></i> Mantiene la masa muscular y fuerza.</li>
-              <li><i class="fas fa-arrow-right"></i> Previene la descalcificación ósea.</li>
-              <li><i class="fas fa-arrow-right"></i> Combate la inflamación celular.</li>
+              <li>
+                <i class="fas fa-arrow-right"></i>
+                <span><strong>CMP (Proteínas moduladoras de citoquina):</strong> Regulan la inflamación celular de forma natural, apoyando el sistema inmunológico desde adentro.</span>
+              </li>
+              <li>
+                <i class="fas fa-arrow-right"></i>
+                <span><strong>RMF (Fórmula moduladora de redox):</strong> Mezcla exclusiva de citratos minerales + creatina que reduce la acidez corporal y mantiene la función muscular.</span>
+              </li>
+              <li>
+                <i class="fas fa-arrow-right"></i>
+                <span>Previene la descalcificación ósea y pérdida de masa muscular.</span>
+              </li>
             </ul>
             <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Platinum"
               class="btn-product" target="_blank" rel="noopener">Comprar Platinum</a>
@@ -393,6 +501,62 @@
         </div>
       </section>
 
+      <!-- CAFÉ IMMUNOTEC -->
+      <section class="product-band" style="background: linear-gradient(135deg, #2c1208 0%, #7b3d10 60%, #a85520 100%);">
+        <div class="product-container reveal">
+          <div>
+            <h2 class="product-title">Café Immunotec</h2>
+            <p class="product-desc">
+              El único café con precursores del Glutatión. Disfruta tu ritual matutino mientras
+              proteges tu sistema inmunológico desde adentro.
+            </p>
+            <ul class="product-list">
+              <li><i class="fas fa-arrow-right"></i> Precursor de Glutatión en cada taza.</li>
+              <li><i class="fas fa-arrow-right"></i> Antioxidantes del café arábica de altura.</li>
+              <li><i class="fas fa-arrow-right"></i> Sin azúcar añadida. Sin OGM.</li>
+              <li><i class="fas fa-arrow-right"></i> Sabor suave y aroma intenso.</li>
+            </ul>
+            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Café%20Immunotec"
+              class="btn-product" style="background:white; color:#7b3d10;" target="_blank" rel="noopener">
+              Comprar Café
+            </a>
+          </div>
+          <div class="product-image-container" style="background:rgba(255,255,255,0.05); border:2px solid rgba(255,255,255,0.15);
+                      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
+            <i class="fas fa-mug-hot" style="font-size:7rem; color:rgba(255,255,255,0.25);"></i>
+            <p class="text-white/40 text-xs uppercase tracking-widest font-semibold">Imagen próximamente</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- KNUTRIC+ -->
+      <section class="product-band" style="background: linear-gradient(135deg, #0d2b0d 0%, #1a5c1a 60%, #2d7a2d 100%);">
+        <div class="product-container reveal">
+          <div class="product-image-container" style="background:rgba(255,255,255,0.05); border:2px solid rgba(255,255,255,0.15);
+                      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
+            <i class="fas fa-bone" style="font-size:7rem; color:rgba(255,255,255,0.25);"></i>
+            <p class="text-white/40 text-xs uppercase tracking-widest font-semibold">Imagen próximamente</p>
+          </div>
+          <div>
+            <h2 class="product-title">Knutric+</h2>
+            <p class="product-desc">
+              Fórmula avanzada para la salud articular y la movilidad. Ideal para personas activas
+              y mayores de 40 años que quieren moverse sin dolor ni rigidez.
+            </p>
+            <ul class="product-list">
+              <li><i class="fas fa-arrow-right"></i> Colágeno hidrolizado tipos I y III.</li>
+              <li><i class="fas fa-arrow-right"></i> Glucosamina + Condroitina + MSM.</li>
+              <li><i class="fas fa-arrow-right"></i> Reduce el dolor articular de forma natural.</li>
+              <li><i class="fas fa-arrow-right"></i> Apoya la regeneración del cartílago.</li>
+            </ul>
+            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Knutric%2B"
+              class="btn-product" style="background:white; color:#2d7a2d;" target="_blank" rel="noopener">
+              Comprar Knutric+
+            </a>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <!-- ==========================================
@@ -463,6 +627,51 @@
     </section>
 
     <!-- ==========================================
+         EN NÚMEROS — Contadores Animados + Video
+         ========================================== -->
+    <section id="en-numeros" class="py-20 bg-[#0133a2]">
+      <div class="max-w-6xl mx-auto px-5 reveal">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white text-center mb-3">
+          Immunocal en Números
+        </h2>
+        <p class="text-blue-200 text-center mb-12 text-base">Décadas de investigación. Millones de vidas impactadas.</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-14">
+          <div class="text-center p-5 md:p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-[#38bdf8] text-4xl md:text-5xl font-display font-extrabold">+</span>
+              <span class="text-white text-4xl md:text-5xl font-display font-extrabold counter" data-target="430">0</span>
+            </div>
+            <p class="text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-2">M. porciones vendidas</p>
+          </div>
+          <div class="text-center p-5 md:p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div class="text-white text-4xl md:text-5xl font-display font-extrabold counter" data-target="45">0</div>
+            <p class="text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-2">Años de investigación</p>
+          </div>
+          <div class="text-center p-5 md:p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div class="text-white text-4xl md:text-5xl font-display font-extrabold counter" data-target="78">0</div>
+            <p class="text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-2">Patentes emitidas</p>
+          </div>
+          <div class="text-center p-5 md:p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div class="text-white text-4xl md:text-5xl font-display font-extrabold counter" data-target="401">0</div>
+            <p class="text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-2">Estudios científicos</p>
+          </div>
+        </div>
+
+        <!-- Video Corporativo YouTube -->
+        <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
+          <iframe
+            src="https://www.youtube.com/embed/EK1KTgVgV10"
+            title="Immunotec — ¿Qué es Immunocal?"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="w-full h-full">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
          OPORTUNIDAD DE NEGOCIO
          ========================================== -->
     <section id="negocio" class="py-24 bg-white text-slate-800">
@@ -507,6 +716,12 @@
               <i class="fab fa-whatsapp text-2xl text-[#25d366]"></i>
               Inicia tu negocio hoy
             </a>
+
+            <!-- Disclaimer de ingresos (requerimiento legal) -->
+            <div class="mt-10 p-5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-500 leading-relaxed">
+              <p class="font-bold text-slate-600 mb-1">⚖️ Aviso de Resultados Típicos</p>
+              <p>Los resultados financieros mostrados no son típicos ni garantizados. Los ingresos de un consultor independiente de Immunotec dependen del esfuerzo individual, el tiempo dedicado, la experiencia y las condiciones del mercado. La mayoría de los consultores obtienen ingresos modestos. Immunotec no garantiza ingresos de ningún nivel. Consulta el Disclosure Statement oficial de Immunotec para conocer los ingresos promedio por rango. Immunotec Inc. es una empresa registrada en Canadá. Los productos Immunocal no están destinados a diagnosticar, tratar, curar o prevenir ninguna enfermedad.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -560,6 +775,53 @@
             </a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         FORMULARIO DE CONTACTO
+         ========================================== -->
+    <section class="py-16 bg-white border-t border-slate-200">
+      <div class="max-w-xl mx-auto px-5 reveal">
+        <div class="text-center mb-8">
+          <h2 class="font-display text-3xl font-bold text-[#0133a2] mb-3">
+            ¿Listo para comenzar?
+          </h2>
+          <p class="text-slate-500">
+            Déjanos tus datos y un asesor te contactará en menos de 24 horas.
+          </p>
+        </div>
+        <form id="contact-form" class="space-y-4 bg-slate-50 p-8 rounded-2xl shadow-md border border-slate-100">
+          <div>
+            <label class="text-sm font-bold text-slate-700 mb-1 block" for="cf-name">Nombre completo</label>
+            <input type="text" id="cf-name" placeholder="Tu nombre" required
+              class="w-full border border-slate-300 rounded-lg py-3 px-4 outline-none
+                     focus:ring-2 focus:ring-blue-300 text-slate-700 bg-white">
+          </div>
+          <div>
+            <label class="text-sm font-bold text-slate-700 mb-1 block" for="cf-phone">WhatsApp (con código de país)</label>
+            <input type="tel" id="cf-phone" placeholder="Ej. +51 999 000 111" required
+              class="w-full border border-slate-300 rounded-lg py-3 px-4 outline-none
+                     focus:ring-2 focus:ring-blue-300 text-slate-700 bg-white">
+          </div>
+          <div>
+            <label class="text-sm font-bold text-slate-700 mb-1 block" for="cf-interest">¿Qué te interesa?</label>
+            <select id="cf-interest" required
+              class="w-full border border-slate-300 rounded-lg py-3 px-4 outline-none
+                     focus:ring-2 focus:ring-blue-300 text-slate-700 bg-white">
+              <option value="">Selecciona una opción...</option>
+              <option value="mejorar mi salud con productos Immunotec">Mejorar mi salud</option>
+              <option value="la oportunidad de negocio de Immunotec">Oportunidad de negocio</option>
+              <option value="salud y la oportunidad de negocio de Immunotec">Salud + Negocio</option>
+            </select>
+          </div>
+          <button type="submit"
+            class="w-full bg-[#0133a2] hover:bg-blue-900 text-white font-bold py-4
+                   rounded-lg transition-colors flex items-center justify-center gap-3 text-lg shadow-md">
+            <i class="fab fa-whatsapp text-xl text-[#25d366]"></i>
+            Enviar por WhatsApp
+          </button>
+        </form>
       </div>
     </section>
 
