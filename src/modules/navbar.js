@@ -42,27 +42,130 @@ export function initNavbar() {
     }
   });
 
-  // --- Lógica de búsqueda ---
-  formBusqueda?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const term = inputBuscar?.value.trim().toLowerCase() ?? '';
-    if (!term) return;
+  // --- Lógica de búsqueda Mobile ---
+  const btnLimpiarMobile  = document.getElementById('btn-limpiar-mobile');
+  const resultadosMobile  = document.getElementById('resultados-mobile');
 
-    const targets = document.querySelectorAll('h2, h3, .producto-titulo');
+  function handleMobileSearch(e) {
+    if (e && e.type === 'submit') e.preventDefault();
+    
+    const term = inputBuscar?.value.trim().toLowerCase() ?? '';
+    
+    // Mostrar u ocultar la X
+    if (term.length > 0) {
+      btnLimpiarMobile?.classList.remove('hidden');
+    } else {
+      btnLimpiarMobile?.classList.add('hidden');
+      resultadosMobile?.classList.add('hidden');
+      return;
+    }
+
+    const targets = document.querySelectorAll('h2, h3, .producto-titulo, .product-title');
     let found = false;
 
+    // Búsqueda en vivo
+    targets.forEach(el => {
+      if (el.textContent.toLowerCase().includes(term)) found = true;
+    });
+
+    if (!found) {
+      resultadosMobile?.classList.remove('hidden');
+    } else {
+      resultadosMobile?.classList.add('hidden');
+    }
+
+    // Al presionar Enter (submit)
+    if (e && e.type === 'submit' && found) {
+      targets.forEach(el => {
+        if (el.textContent.toLowerCase().includes(term)) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.style.transition = 'color 0.5s';
+          el.style.color = '#0133a2';
+          setTimeout(() => (el.style.color = ''), 2000);
+        }
+      });
+      resultadosMobile?.classList.add('hidden');
+      if (window.innerWidth < 768) formBusqueda?.classList.add('hidden');
+    }
+  }
+
+  inputBuscar?.addEventListener('input', handleMobileSearch);
+  formBusqueda?.addEventListener('submit', handleMobileSearch);
+
+  btnLimpiarMobile?.addEventListener('click', () => {
+    if (inputBuscar) inputBuscar.value = '';
+    btnLimpiarMobile.classList.add('hidden');
+    resultadosMobile?.classList.add('hidden');
+    inputBuscar?.focus();
+  });
+
+  // --- Buscador Desktop ---
+  const formBusquedaDesktop = document.getElementById('form-busqueda-desktop');
+  const inputBuscarDesktop  = document.getElementById('buscador-desktop');
+  const btnLimpiarDesktop   = document.getElementById('btn-limpiar-desktop');
+  const resultadosDesktop   = document.getElementById('resultados-desktop');
+
+  function handleDesktopSearch(e) {
+    if (e && e.type === 'submit') e.preventDefault();
+    
+    const term = inputBuscarDesktop?.value.trim().toLowerCase() ?? '';
+    
+    // Mostrar u ocultar la X
+    if (term.length > 0) {
+      btnLimpiarDesktop?.classList.remove('hidden');
+    } else {
+      btnLimpiarDesktop?.classList.add('hidden');
+      resultadosDesktop?.classList.add('hidden');
+      return;
+    }
+
+    const targets = document.querySelectorAll('h2, h3, .producto-titulo, .product-title');
+    let found = false;
+
+    // Búsqueda en vivo para verificar si hay coincidencias
     targets.forEach(el => {
       if (el.textContent.toLowerCase().includes(term)) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.style.transition = 'color 0.5s';
-        el.style.color = '#0133a2';
-        setTimeout(() => (el.style.color = ''), 2000);
         found = true;
       }
     });
 
-    if (!found) showToast('Producto no encontrado. Intenta con otra palabra.');
-    else if (window.innerWidth < 768) formBusqueda?.classList.add('hidden');
+    if (!found) {
+      resultadosDesktop?.classList.remove('hidden');
+    } else {
+      resultadosDesktop?.classList.add('hidden');
+    }
+
+    // Si el usuario presiona Enter (submit), hace scroll hacia el resultado
+    if (e && e.type === 'submit' && found) {
+      targets.forEach(el => {
+        if (el.textContent.toLowerCase().includes(term)) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.style.transition = 'color 0.5s';
+          el.style.color = '#0133a2';
+          setTimeout(() => (el.style.color = ''), 2000);
+        }
+      });
+      // Ocultamos el panel tras buscar
+      resultadosDesktop?.classList.add('hidden');
+    }
+  }
+
+  inputBuscarDesktop?.addEventListener('input', handleDesktopSearch);
+  formBusquedaDesktop?.addEventListener('submit', handleDesktopSearch);
+
+  // Limpiar el input al hacer clic en la X
+  btnLimpiarDesktop?.addEventListener('click', () => {
+    if (inputBuscarDesktop) inputBuscarDesktop.value = '';
+    btnLimpiarDesktop.classList.add('hidden');
+    resultadosDesktop?.classList.add('hidden');
+    inputBuscarDesktop?.focus();
+  });
+
+  // Ocultar resultados si se hace clic fuera del buscador
+  document.addEventListener('click', (e) => {
+    if (!formBusquedaDesktop?.contains(e.target)) {
+      resultadosDesktop?.classList.add('hidden');
+    }
   });
 }
 
