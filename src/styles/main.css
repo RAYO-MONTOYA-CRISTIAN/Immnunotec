@@ -13,7 +13,7 @@
   --color-prod-red: #dc2626;
   --color-prod-green: #50bd77;
 
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Montserrat', sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
 }
 
@@ -93,8 +93,8 @@ body.loading {
    ===================================================== */
 .nav-link {
   position: relative;
-  font-size: 0.9rem;
-  font-weight: 500;
+  /*font-size: 0.9rem;*/
+  font-weight: 401;
   transition: color 0.3s;
 }
 
