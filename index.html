@@ -211,10 +211,23 @@
     <!-- Nav Links + Carrito Desktop: lado derecho estilo Shakra -->
     <div class="hidden lg:flex items-center gap-7 shrink-0">
       <ul class="flex items-center gap-9 text-lg font-medium tracking-wide text-white">
-        <li>
-          <a href="#productos" class="nav-link hover:text-slate-300 transition-colors flex items-center gap-1">
-            Productos <i class="fas fa-chevron-down text-[10px] mt-0.5"></i>
+        <li class="relative group">
+          <a href="#productos" class="nav-link hover:text-slate-300 transition-colors flex items-center gap-1 py-3">
+            Productos <i class="fas fa-chevron-down text-[10px] mt-0.5 group-hover:rotate-180 transition-transform"></i>
           </a>
+          
+          <!-- Dropdown Desplegable -->
+          <div class="absolute top-full left-0 mt-0 w-64 bg-white text-gray-800 rounded-md shadow-xl border border-gray-100 hidden group-hover:block z-50">
+            <ul class="flex flex-col py-2 text-[15px] font-normal tracking-normal">
+              <li><a href="#clasico" class="block px-5 py-2.5 hover:bg-gray-50 hover:text-[#0133a2] transition-colors border-b border-gray-50">Immunocal Clásico</a></li>
+              <li><a href="#platinum" class="block px-5 py-2.5 hover:bg-gray-50 hover:text-[#0133a2] transition-colors border-b border-gray-50">Immunocal Platinum</a></li>
+              <li><a href="#sport" class="block px-5 py-2.5 hover:bg-gray-50 hover:text-[#0133a2] transition-colors border-b border-gray-50">Immunocal Sport</a></li>
+              <li><a href="#optimizer" class="block px-5 py-2.5 hover:bg-gray-50 hover:text-[#0133a2] transition-colors border-b border-gray-50">Immunocal Optimizer</a></li>
+              <li><a href="#cafe" class="block px-5 py-2.5 hover:bg-gray-50 hover:text-[#0133a2] transition-colors border-b border-gray-50">Café Immunotec</a></li>
+              <li><a href="#omega" class="block px-5 py-2.5 hover:bg-gray-50 hover:text-[#0133a2] transition-colors border-b border-gray-50">Omega Gen V</a></li>
+              <li><a href="#knutric" class="block px-5 py-2.5 hover:bg-gray-50 hover:text-[#0133a2] transition-colors">Knutric+</a></li>
+            </ul>
+          </div>
         </li>
         <li><a href="#nosotros" class="nav-link hover:text-slate-300 transition-colors">Nosotros</a></li>
         <li><a href="#contacto" class="nav-link hover:text-gray-300 transition-colors">Contacto</a></li>
@@ -271,7 +284,7 @@
 
     <!-- HERO -->
     <section id="hero"
-      class="pt-24 relative overflow-hidden h-screen flex items-center md:pt-0 md:h-[90vh] md:flex-col md:justify-center">
+      class="pt-24 relative overflow-hidden h-[10vh] flex items-center md:pt-0 md:h-[90vh] md:flex-col md:justify-center">
 
       <!-- Fondos multimedia (carrusel) -->
       <div id="hero-media-container" class="absolute top-0 left-0 w-full h-full z-0 opacity-0"></div>
@@ -290,6 +303,8 @@
         aria-label="Siguiente">
         <i class="fas fa-chevron-right"></i>
       </button>
+
+     
 
       <!-- Dots de paginación -->
       <div id="hero-dots" class="absolute bottom-8 md:bottom-4 left-1/2 -translate-x-1/2 flex gap-3 md:gap-4 z-40">
@@ -459,8 +474,30 @@
          ========================================== -->
     <div id="productos">
 
+      <!-- CLÁSICO -->
+      <section class="product-band band-blue" id="clasico">
+        <div class="product-container reveal">
+          <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true"
+            data-tilt-max-glare="0.3">
+            <img src="/IMGS/immunotec_clasico (1).png" alt="Immunocal Clásico" class="real-product-img">
+          </div>
+          <div>
+            <h2 class="product-title">Immunocal Clásico</h2>
+            <p class="product-desc">Proteína de suero de leche especialmente formulada para entregar cisteína
+              consolidada, el bloque de construcción clave para producir Glutatión.</p>
+            <ul class="product-list">
+              <li><i class="fas fa-check text-blue-300"></i> Optimiza el sistema inmunológico.</li>
+              <li><i class="fas fa-check text-blue-300"></i> Desintoxicador celular maestro.</li>
+              <li><i class="fas fa-check text-blue-300"></i> Incrementa la energía natural.</li>
+            </ul>
+            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Clásico" class="btn-product"
+              style="background:white; color:#0133a2;" target="_blank" rel="noopener">Comprar Clásico</a>
+          </div>
+        </div>
+      </section>
+
       <!-- PLATINUM -->
-      <section class="product-band band-silver">
+      <section class="product-band band-silver" id="platinum">
         <div class="product-container reveal">
           <div>
             <h2 class="product-title">Immunocal Platinum</h2>
@@ -494,8 +531,91 @@
         </div>
       </section>
 
+      <!-- SPORT -->
+      <section class="product-band band-red" id="sport">
+        <div class="product-container reveal">
+          <div>
+            <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400"
+              data-tilt-glare="true" data-tilt-max-glare="0.3">
+              <img src="/IMGS/sport0.png" alt="Immunocal Sport" class="real-product-img">
+            </div>
+          </div>
+          <div>
+            <h2 class="product-title">Immunocal Sport</h2>
+            <p class="product-desc" style="font-size:0.95rem;">
+              Potente fórmula con precursores de óxido nítrico para suministrar más oxígeno al cuerpo, aumentando el
+              rendimiento y logrando una recuperación rápida.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
+              <ul class="product-list m-0">
+                <li><i class="fas fa-circle text-[8px]"></i> Precursor del glutatión</li>
+                <li><i class="fas fa-circle text-[8px]"></i> Alto valor biológico</li>
+                <li><i class="fas fa-circle text-[8px]"></i> Raíz de remolacha (Óxido Nítrico)</li>
+              </ul>
+              <ul class="product-list m-0">
+                <li><i class="fas fa-circle text-[8px]"></i> Cereza ácida (Antiinflamatorio)</li>
+                <li><i class="fas fa-circle text-[8px]"></i> Citrato de magnesio</li>
+                <li><i class="fas fa-circle text-[8px]"></i> Sin gluten. Sin OGM</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Sport" class="btn-product"
+              style="background:#0133a2; border:none;" target="_blank" rel="noopener">Comprar Sport</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTIMIZER -->
+      <section class="product-band band-green" id="optimizer">
+        <div class="product-container reveal">
+          <div>
+            <h2 class="product-title">Immunocal Optimizer</h2>
+            <h3 class="text-xl mb-4 font-display">Beneficios</h3>
+            <ul class="product-list">
+              <li><i class="fas fa-arrow-right"></i> Complemento perfecto para Immunocal.</li>
+              <li><i class="fas fa-arrow-right"></i> Multiplica la acción de los antioxidantes.</li>
+              <li><i class="fas fa-arrow-right"></i> Más de 50 frutas y verduras orgánicas.</li>
+              <li><i class="fas fa-arrow-right"></i> Extracto de semilla de brócoli.</li>
+            </ul>
+            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Optimizer" class="btn-product" target="_blank"
+              rel="noopener">Adquirir Optimizer</a>
+          </div>
+          <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true"
+            data-tilt-max-glare="0.3">
+            <img src="/IMGS/Sin-título-3-1536x1163-1.png" alt="Immunocal Optimizer" class="real-product-img">
+          </div>
+        </div>
+      </section>
+
+      <!-- CAFÉ IMMUNOTEC -->
+      <section class="product-band" id="cafe" style="background: linear-gradient(135deg, #2c1208 0%, #7b3d10 60%, #a85520 100%);">
+        <div class="product-container reveal">
+          <div>
+            <h2 class="product-title">Café Immunotec</h2>
+            <p class="product-desc">
+              El único café con precursores del Glutatión. Disfruta tu ritual matutino mientras
+              proteges tu sistema inmunológico desde adentro.
+            </p>
+            <ul class="product-list">
+              <li><i class="fas fa-arrow-right"></i> Precursor de Glutatión en cada taza.</li>
+              <li><i class="fas fa-arrow-right"></i> Antioxidantes del café arábica de altura.</li>
+              <li><i class="fas fa-arrow-right"></i> Sin azúcar añadida. Sin OGM.</li>
+              <li><i class="fas fa-arrow-right"></i> Sabor suave y aroma intenso.</li>
+            </ul>
+            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Café%20Immunotec" class="btn-product"
+              style="background:white; color:#7b3d10;" target="_blank" rel="noopener">
+              Comprar Café
+            </a>
+          </div>
+          <div class="product-image-container" style="background:rgba(255,255,255,0.05); border:2px solid rgba(255,255,255,0.15);
+                      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
+            <i class="fas fa-mug-hot" style="font-size:7rem; color:rgba(255,255,255,0.25);"></i>
+            <p class="text-white/40 text-xs uppercase tracking-widest font-semibold">Imagen próximamente</p>
+          </div>
+        </div>
+      </section>
+
       <!-- OMEGA GEN V -->
-      <section class="product-band band-orange">
+      <section class="product-band band-orange" id="omega">
         <div class="product-container reveal">
           <div class="text-center">
             <div class="flex justify-center gap-10 text-sm mb-4 opacity-80 uppercase tracking-widest hidden md:flex">
@@ -532,113 +652,8 @@
         </div>
       </section>
 
-      <!-- SPORT -->
-      <section class="product-band band-red">
-        <div class="product-container reveal">
-          <div>
-            <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400"
-              data-tilt-glare="true" data-tilt-max-glare="0.3">
-              <img src="/IMGS/sport0.png" alt="Immunocal Sport" class="real-product-img">
-            </div>
-          </div>
-          <div>
-            <h2 class="product-title">Immunocal Sport</h2>
-            <p class="product-desc" style="font-size:0.95rem;">
-              Potente fórmula con precursores de óxido nítrico para suministrar más oxígeno al cuerpo, aumentando el
-              rendimiento y logrando una recuperación rápida.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
-              <ul class="product-list m-0">
-                <li><i class="fas fa-circle text-[8px]"></i> Precursor del glutatión</li>
-                <li><i class="fas fa-circle text-[8px]"></i> Alto valor biológico</li>
-                <li><i class="fas fa-circle text-[8px]"></i> Raíz de remolacha (Óxido Nítrico)</li>
-              </ul>
-              <ul class="product-list m-0">
-                <li><i class="fas fa-circle text-[8px]"></i> Cereza ácida (Antiinflamatorio)</li>
-                <li><i class="fas fa-circle text-[8px]"></i> Citrato de magnesio</li>
-                <li><i class="fas fa-circle text-[8px]"></i> Sin gluten. Sin OGM</li>
-              </ul>
-            </div>
-            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Sport" class="btn-product"
-              style="background:#0133a2; border:none;" target="_blank" rel="noopener">Comprar Sport</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- OPTIMIZER -->
-      <section class="product-band band-green">
-        <div class="product-container reveal">
-          <div>
-            <h2 class="product-title">Immunocal Optimizer</h2>
-            <h3 class="text-xl mb-4 font-display">Beneficios</h3>
-            <ul class="product-list">
-              <li><i class="fas fa-arrow-right"></i> Complemento perfecto para Immunocal.</li>
-              <li><i class="fas fa-arrow-right"></i> Multiplica la acción de los antioxidantes.</li>
-              <li><i class="fas fa-arrow-right"></i> Más de 50 frutas y verduras orgánicas.</li>
-              <li><i class="fas fa-arrow-right"></i> Extracto de semilla de brócoli.</li>
-            </ul>
-            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Optimizer" class="btn-product" target="_blank"
-              rel="noopener">Adquirir Optimizer</a>
-          </div>
-          <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true"
-            data-tilt-max-glare="0.3">
-            <img src="/IMGS/Sin-título-3-1536x1163-1.png" alt="Immunocal Optimizer" class="real-product-img">
-          </div>
-        </div>
-      </section>
-
-      <!-- CLÁSICO -->
-      <section class="product-band band-blue">
-        <div class="product-container reveal">
-          <div class="product-image-container" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true"
-            data-tilt-max-glare="0.3">
-            <img src="/IMGS/immunotec_clasico (1).png" alt="Immunocal Clásico" class="real-product-img">
-          </div>
-          <div>
-            <h2 class="product-title">Immunocal Clásico</h2>
-            <p class="product-desc">Proteína de suero de leche especialmente formulada para entregar cisteína
-              consolidada, el bloque de construcción clave para producir Glutatión.</p>
-            <ul class="product-list">
-              <li><i class="fas fa-check text-blue-300"></i> Optimiza el sistema inmunológico.</li>
-              <li><i class="fas fa-check text-blue-300"></i> Desintoxicador celular maestro.</li>
-              <li><i class="fas fa-check text-blue-300"></i> Incrementa la energía natural.</li>
-            </ul>
-            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Immunocal%20Clásico" class="btn-product"
-              style="background:white; color:#0133a2;" target="_blank" rel="noopener">Comprar Clásico</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- CAFÉ IMMUNOTEC -->
-      <section class="product-band" style="background: linear-gradient(135deg, #2c1208 0%, #7b3d10 60%, #a85520 100%);">
-        <div class="product-container reveal">
-          <div>
-            <h2 class="product-title">Café Immunotec</h2>
-            <p class="product-desc">
-              El único café con precursores del Glutatión. Disfruta tu ritual matutino mientras
-              proteges tu sistema inmunológico desde adentro.
-            </p>
-            <ul class="product-list">
-              <li><i class="fas fa-arrow-right"></i> Precursor de Glutatión en cada taza.</li>
-              <li><i class="fas fa-arrow-right"></i> Antioxidantes del café arábica de altura.</li>
-              <li><i class="fas fa-arrow-right"></i> Sin azúcar añadida. Sin OGM.</li>
-              <li><i class="fas fa-arrow-right"></i> Sabor suave y aroma intenso.</li>
-            </ul>
-            <a href="https://wa.me/51995309712?text=Quiero%20comprar%20Café%20Immunotec" class="btn-product"
-              style="background:white; color:#7b3d10;" target="_blank" rel="noopener">
-              Comprar Café
-            </a>
-          </div>
-          <div class="product-image-container" style="background:rgba(255,255,255,0.05); border:2px solid rgba(255,255,255,0.15);
-                      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
-            <i class="fas fa-mug-hot" style="font-size:7rem; color:rgba(255,255,255,0.25);"></i>
-            <p class="text-white/40 text-xs uppercase tracking-widest font-semibold">Imagen próximamente</p>
-          </div>
-        </div>
-      </section>
-
       <!-- KNUTRIC+ -->
-      <section class="product-band" style="background: linear-gradient(135deg, #0d2b0d 0%, #1a5c1a 60%, #2d7a2d 100%);">
+      <section class="product-band" id="knutric" style="background: linear-gradient(135deg, #0d2b0d 0%, #1a5c1a 60%, #2d7a2d 100%);">
         <div class="product-container reveal">
           <div class="product-image-container" style="background:rgba(255,255,255,0.05); border:2px solid rgba(255,255,255,0.15);
                       display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem;">
